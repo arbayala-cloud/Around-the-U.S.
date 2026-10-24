@@ -32,7 +32,7 @@
   .sources a { color: #161616; text-decoration: underline; text-underline-offset: 2px; }
   .more { margin-top: 12px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; }
   .more a { color: #111; text-decoration: none; border-bottom: 1px solid #111; padding-bottom: 2px; }
-  .hl-item { padding: 15px 0; border-bottom: 1px solid #e6e6e3; }
+  .hl-item { padding: 12px 0; border-bottom: 1px solid #e6e6e3; }
   .hl-item:last-of-type { border-bottom: none; }
   .lanes { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
   .card { border-top: 2px solid #111; padding: 14px 0 4px; background: transparent; }
@@ -45,8 +45,8 @@
   .inspiration .fulllink a { color: #111; text-decoration: none; border-bottom: 1px solid #bbb; padding-bottom: 1px; }
   footer { border-top: 1px solid #ddd; margin-top: 46px; padding-top: 16px; font-family: Arial, Helvetica, sans-serif; font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; text-align: center; color: #999; }
 
-  .menubtn { position: static; flex-shrink: 0; z-index: 80; font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1; background: #fff; color: #111; border: 1px solid #cfcfcf; border-radius: 3px; padding: 8px 11px; cursor: pointer; box-shadow: 0 1px 5px rgba(0,0,0,.10); }
-  .menubtn:hover { background: #111; color: #fff; border-color: #111; }
+  .menubtn { position: static; flex-shrink: 0; z-index: 80; font-family: Arial, Helvetica, sans-serif; font-size: 19px; line-height: 1; background: none; color: #111; border: none; border-radius: 0; padding: 8px 4px; cursor: pointer; box-shadow: none; }
+  .menubtn:hover { background: none; color: #555; border-color: transparent; }
   .scrim { display: none; position: fixed; inset: 0; background: rgba(20,20,20,.42); z-index: 85; }
   .scrim.open { display: block; }
   .drawer { position: fixed; top: 0; left: 0; height: 100%; width: 272px; max-width: 84vw; background: #fff; border-right: 1px solid #e2e2e2; z-index: 90; transform: translateX(-105%); transition: transform .28s ease; padding: 16px 0 26px; overflow-y: auto; text-align: left; }
@@ -60,8 +60,8 @@
   .menu-row { display: flex; gap: 8px; padding: 18px 22px 4px; margin-top: 14px; border-top: 1px solid #eee; }
   .menu-row button { font-family: Arial, Helvetica, sans-serif; font-size: 12px; background: #fff; color: #161616; border: 1px solid #c9c9c9; border-radius: 3px; padding: 6px 11px; cursor: pointer; }
   .menu-row button.active { background: #111; color: #fff; border-color: #111; }
-  body.dark .menubtn { background: #171717; color: #eee; border-color: #3a3a3a; box-shadow: none; }
-  body.dark .menubtn:hover { background: #eee; color: #111; }
+  body.dark .menubtn { background: none; color: #eee; border-color: transparent; box-shadow: none; }
+  body.dark .menubtn:hover { background: none; color: #bbb; }
   body.dark .drawer { background: #141414; border-right-color: #2b2b2b; }
   body.dark .drawer-x { color: #9a9a9a; }
   body.dark .drawer a { color: #e9e9e9; }
@@ -111,17 +111,25 @@
   .weather { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; margin: 18px auto 4px; padding: 10px 14px; background: #f7f6f2; border: 1px solid #e3e1da; border-top: 3px solid #111; font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; text-align: center; color: #161616; }
   .weather .wtext { line-height: 1.5; }
   .weather form { display: flex; gap: 6px; align-items: center; }
-  .weather input { width: 88px; padding: 6px 8px; border: 1px solid #c9c9c9; border-radius: 3px; font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; background: #fff; color: #161616; }
-  .weather button { font-family: Arial, Helvetica, sans-serif; font-size: 12px; background: #fff; color: #161616; border: 1px solid #c9c9c9; border-radius: 3px; padding: 6px 11px; cursor: pointer; }
-  .weather button:hover { background: #111; color: #fff; border-color: #111; }
+  .weather input { width: 76px; padding: 5px 6px; border: 1px solid #c9c9c9; border-radius: 3px; font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; background: #fff; color: #161616; }
+  .weather button { font-family: Arial, Helvetica, sans-serif; font-size: 12px; background: none; color: #161616; border: none; border-radius: 0; padding: 6px 2px; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+  .weather button:hover { background: none; color: #555; border-color: transparent; }
   body.dark .weather { background: #171717; border-color: #2b2b2b; border-top-color: #e9e9e9; color: #e9e9e9; }
   body.dark .weather input { background: #101010; color: #e9e9e9; border-color: #3d3d3d; }
-  body.dark .weather button { background: #171717; color: #e9e9e9; border-color: #3d3d3d; }
-  body.dark .weather button:hover { background: #e9e9e9; color: #111; }
+  body.dark .weather button { background: none; color: #e9e9e9; border-color: transparent; }
+  body.dark .weather button:hover { background: none; color: #bbb; }
 
   .nameplate { display: flex; align-items: center; gap: 16px; }
   .nameplate .masthead, .nameplate h1 { flex: 1; }
   @media (max-width: 640px) { .nameplate { gap: 12px; } }
+
+  .foot-name { font-size: 12px; letter-spacing: 3px; color: #555; margin-bottom: 8px; }
+  .foot-nav { margin-bottom: 8px; }
+  .foot-nav a { color: #777; text-decoration: none; }
+  .foot-nav a:hover { text-decoration: underline; }
+  .foot-note { color: #999; }
+  body.dark .foot-name { color: #aaa; }
+  body.dark .foot-nav a { color: #888; }
 </style>
 </head>
 <body>
@@ -150,10 +158,10 @@
   </div>
 
   <section>
-    <h3 class="topstory-title"><a href="across-us.html">Pike execution went ahead despite IV warnings, new court filing says</a></h3>
-    <p class="story-note">An Oct. 22 filing in the death-row prisoners&#8217; lethal-injection lawsuit says the execution team spent nearly an hour placing Pike&#8217;s IVs, was warned veins may have &#8220;blown,&#8221; never tried the central line the protocol allows, and that the ambulance was delayed getting in by a verification-code mix-up. The filing does not establish whether the IV problems kept the drugs from working. Still no written ruling in Pike&#8217;s own deadline fight, and no new execution date.</p>
-    <div class="story-meta">Oct. 23, 2026 &bull; Tennessee &bull; Across the U.S. &mdash; Crime</div>
-    <div class="sources">Read it: <a href="https://www.usatoday.com/story/news/crime/2026/10/23/christa-pike-execution-attempt-iv-veins/92395990007/">USA TODAY</a> &middot; <a href="https://www.tennessean.com/story/news/crime/2026/10/23/christa-pikes-botched-execution-iv-failures/92394815007/">The Tennessean</a></div>
+    <h3 class="topstory-title"><a href="across-us.html">Minute-by-minute account of Pike’s failed execution alarms medical experts</a></h3>
+    <p class="story-note">A minute-by-minute account from Pike’s lawyer, who was in the death chamber on Sept. 30, says the IV team took about six minutes on her right arm and nearly an hour on her left, while Pike grimaced as a needle was moved inside her arm. At 6:57 p.m. a team member said a vein “might be blowing”; at 7:07 another said “I think it’s blown”; at 7:23 saline pushed through the line “with difficulty” — and the procedure began a minute later. The team never tried the central line the protocol allows. Medical experts who reviewed the account called the IV work alarming and far below what any medical setting would accept. Tennessee’s executions remain paused through 2026, Pike’s own deadline fight still awaits a written ruling, and there is still no new execution date.</p>
+    <div class="story-meta">Oct. 24, 2026 &bull; Tennessee &bull; Across the U.S. &mdash; Crime</div>
+    <div class="sources">Read it: <a href="https://www.the-sun.com/news/17196639/christa-pike-blown-veins-lawyer-timeline-botched-execution-tennessee/">The Sun</a> &middot; <a href="https://www.usatoday.com/story/news/crime/2026/10/23/christa-pike-execution-attempt-iv-veins/92395990007/">USA TODAY</a></div>
     <div class="more"><a href="across-us.html">More on the Across the U.S. page &rarr;</a></div>
   </section>
 
@@ -161,26 +169,40 @@
     <h2>Latest Headlines</h2>
     <div class="hl-item">
       <span class="label">Across the U.S. &bull; Crime</span>
-      <h3 class="teaser-title"><a href="across-us.html">Pike execution went ahead despite IV warnings, new court filing says</a></h3>
-      <div class="story-meta">Oct. 23, 2026 &bull; Tennessee</div>
+      <h3 class="teaser-title"><a href="across-us.html">Minute-by-minute account of Pike’s failed execution alarms medical experts</a></h3>
+      <div class="story-meta">Oct. 24, 2026 &bull; Tennessee</div>
+    </div>
+    <div class="hl-item">
+      <span class="label">Texas &bull; Politics</span>
+      <h3 class="teaser-title"><a href="texas.html">Talarico tells Austin rally: “Texas is not for sale”</a></h3>
+      <div class="story-meta">Oct. 23, 2026 &bull; Austin</div>
+    </div>
+    <div class="hl-item">
+      <span class="label">Texas &bull; Crime</span>
+      <h3 class="teaser-title"><a href="texas.html">FBI stopped alleged ISIS plot against Rep. Keith Self, reports say</a></h3>
+      <div class="story-meta">Oct. 23, 2026 &bull; McKinney</div>
+    </div>
+    <div class="hl-item">
+      <span class="label">Texas &bull; Politics</span>
+      <h3 class="teaser-title"><a href="texas.html">Fifth Circuit: Constitution does not require bond hearings for detained migrants</a></h3>
+      <div class="story-meta">Oct. 23, 2026 &bull; New Orleans</div>
+    </div>
+    <div class="hl-item">
+      <span class="label">Across the U.S. &bull; Politics</span>
+      <h3 class="teaser-title"><a href="across-us.html">Postal Service’s election-mail push begins today, runs through Nov. 3</a></h3>
+      <div class="story-meta">Oct. 24, 2026 &bull; Washington</div>
     </div>
     <div class="hl-item">
       <span class="label">Vermont &bull; Politics</span>
-      <h3 class="teaser-title"><a href="vermont.html">Scott and Janoo clash in first governor&#8217;s debate</a></h3>
-      <div class="story-meta">Oct. 22, 2026 &bull; Vermont</div>
+      <h3 class="teaser-title"><a href="vermont.html">Vermont’s motel-shelter screening rules draw scrutiny from lawmakers</a></h3>
+      <div class="story-meta">Oct. 22, 2026 &bull; Montpelier</div>
     </div>
-    <div class="hl-item">
-      <span class="label">Vermont &bull; Crime</span>
-      <h3 class="teaser-title"><a href="vermont.html">Inmate charged in Marble Valley prison assault; cellmate needed facial surgery</a></h3>
-      <div class="story-meta">Oct. 21, 2026 &bull; Rutland</div>
-    </div>
-    <p class="empty" style="margin-top: 12px;">Texas: no stories yet &mdash; the first Texas edition is coming.</p>
   </section>
 
 
   <section id="otd"><h2>On This Day</h2><p class="story-note" id="otd-text"></p></section>
 
-  <footer>Black &amp; white edition &mdash; Around the U.S.</footer>
+  <footer><div class="foot-name">Around the U.S.</div><div class="foot-nav"><a href="index.html">Front Page</a> &nbsp;&middot;&nbsp; <a href="texas.html">Texas</a> &nbsp;&middot;&nbsp; <a href="vermont.html">Vermont</a> &nbsp;&middot;&nbsp; <a href="across-us.html">Across the U.S.</a> &nbsp;&middot;&nbsp; <a href="inspiration.html">Inspiration</a></div><div class="foot-note">Black &amp; white edition &bull; Stories link to their original sources.</div></footer>
 </main>
 <script src="inspirations.js"></script>
 <script>
