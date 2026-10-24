@@ -46,6 +46,44 @@
   .more a { color: #111; font-weight: bold; }
   footer { border-top: 2px solid #111; margin-top: 34px; padding-top: 14px; font-family: Arial, sans-serif; font-size: 12px; text-align: center; color: #333; }
   @media (max-width: 640px) { h1.masthead { font-size: 46px; } .lanes { grid-template-columns: 1fr; } }
+
+  .reader-bar { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; font-family: Arial, sans-serif; }
+  .reader-bar .rb-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #555; margin-right: 2px; }
+  .reader-bar button { font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 1px; background: #fff; color: #111; border: 2px solid #111; padding: 5px 10px; cursor: pointer; }
+  .reader-bar button.active { background: #111; color: #fff; }
+  body.dark { background: #121212; color: #e8e8e8; }
+  body.dark .masthead { color: #f2f2f2; }
+  body.dark .dateline { color: #aaa; border-top-color: #e8e8e8; border-bottom-color: #e8e8e8; }
+  body.dark nav a { background: #1c1c1c; color: #eee; border-color: #eee; }
+  body.dark nav a.active { background: #eee; color: #111; }
+  body.dark section { border-top-color: #e8e8e8; }
+  body.dark section h2, body.dark .teaser-title, body.dark .teaser-title a, body.dark .topstory-title a, body.dark .story h3, body.dark .story h3 a { color: #f2f2f2; }
+  body.dark .label { background: #eee; color: #111; }
+  body.dark .card { background: #1c1c1c; border-color: #555; }
+  body.dark .story-note { color: #d8d8d8; }
+  body.dark .story-meta { color: #999; }
+  body.dark .sources a, body.dark .more a { color: #a9c1ff; }
+  body.dark .inspiration { border: 1px solid #666; background: #000; }
+  body.dark .hl-item { border-bottom-color: #444; }
+  body.dark .empty { color: #999; }
+  body.dark footer { color: #888; }
+  body.dark .reader-bar .rb-label { color: #aaa; }
+  body.dark .reader-bar button { background: #1c1c1c; color: #eee; border-color: #eee; }
+  body.dark .reader-bar button.active { background: #eee; color: #111; }
+  body.dark .day { border-bottom-color: #444; }
+  body.dark .day p { color: #d8d8d8; }
+  body.dark .day .ref { color: #f2f2f2; }
+  body.dark .theme { color: #aaa; }
+  body.font-s .story-note { font-size: 14px; }
+  body.font-l .story-note { font-size: 19px; }
+  body.font-s .teaser-title { font-size: 19px; }
+  body.font-l .teaser-title { font-size: 25px; }
+  body.font-s .topstory-title { font-size: 27px; }
+  body.font-l .topstory-title { font-size: 38px; }
+  body.font-s .inspiration p { font-size: 11px; }
+  body.font-l .inspiration p { font-size: 15px; }
+  body.font-s .day p { font-size: 15px; }
+  body.font-l .day p { font-size: 20px; }
 </style>
 </head>
 <body>
@@ -56,6 +94,7 @@
     <div class="dateline">Around the U.S. &bull; Texas Edition</div>
     <div class="nav"><a href="index.html">Front Page</a><a href="texas.html" class="here">Texas</a><a href="vermont.html">Vermont</a><a href="across-us.html">Across the U.S.</a></div>
   </header>
+  <div class="reader-bar"><span class="rb-label">Reading</span><button id="themeBtn" onclick="ausTheme()">&#9790; Dark</button><button data-fs="s" onclick="ausFont('s')">A&#8722;</button><button data-fs="m" onclick="ausFont('m')">A</button><button data-fs="l" onclick="ausFont('l')">A+</button></div>
 <section>
     <h2>Texas</h2>
     <div class="story-meta" style="font-size:13px;">Crime &bull; Politics</div>
@@ -65,5 +104,12 @@
 <footer>Black &amp; white edition &mdash; Around the U.S.</footer>
 </main>
 
+<script>
+(function(){try{var t=localStorage.getItem('aus-theme');if(t==='dark')document.body.classList.add('dark');var f=localStorage.getItem('aus-font');if(f&&f!=='m')document.body.classList.add('font-'+f);}catch(e){}
+function mark(){var d=document.body.classList.contains('dark');var tb=document.getElementById('themeBtn');if(tb)tb.innerHTML=d?'&#9728; Light':'&#9790; Dark';var bs=document.querySelectorAll('[data-fs]');for(var i=0;i<bs.length;i++){var fs=bs[i].getAttribute('data-fs');var on=document.body.classList.contains('font-'+fs)||(fs==='m'&&!document.body.classList.contains('font-s')&&!document.body.classList.contains('font-l'));bs[i].classList.toggle('active',on);}}
+window.ausTheme=function(){document.body.classList.toggle('dark');try{localStorage.setItem('aus-theme',document.body.classList.contains('dark')?'dark':'light');}catch(e){}mark();};
+window.ausFont=function(s){document.body.classList.remove('font-s');document.body.classList.remove('font-l');if(s!=='m')document.body.classList.add('font-'+s);try{localStorage.setItem('aus-font',s);}catch(e){}mark();};
+mark();})();
+</script>
 </body>
 </html>
