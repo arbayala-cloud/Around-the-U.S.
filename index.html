@@ -14,11 +14,11 @@
   .rule-top { border-top: 5px solid #111; border-bottom: 1px solid #111; height: 4px; margin-bottom: 14px; }
   h1.masthead { margin: 0; font-family: 'UnifrakturMaguntia', Georgia, serif; font-weight: 400; font-size: 72px; line-height: 1.05; }
   h1.masthead a { color: #111; text-decoration: none; }
-  .dateline { display: flex; justify-content: space-between; gap: 10px; border-top: 1px solid #111; border-bottom: 3px solid #111; padding: 6px 2px; margin-top: 12px; font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
-  .nav { margin-top: 12px; font-family: Arial, sans-serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
-  .nav a { color: #111; text-decoration: none; border-bottom: 2px solid #111; padding-bottom: 1px; margin: 0 6px; }
+  .dateline { border-top: 1px solid #111; border-bottom: 3px solid #111; padding: 8px 4px; margin-top: 12px; font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; text-align: center; line-height: 1.7; }
+  .nav { margin-top: 14px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-family: Arial, sans-serif; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
+  .nav a { color: #111; text-decoration: none; border: 1.5px solid #111; padding: 7px 12px; background: #fff; }
   .nav a:hover { background: #111; color: #fff; }
-  .nav a.here { background: #111; color: #fff; padding: 2px 6px; }
+  .nav a.here { background: #111; color: #fff; }
   .inspiration { background: #111; color: #fff; padding: 22px; margin: 22px 0 30px; }
   .inspiration h2, section h2 { margin: 0 0 10px; font-family: Arial, sans-serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
   .inspiration p { margin: 0; font-size: 22px; line-height: 1.35; }
@@ -45,7 +45,7 @@
   .more { font-family: Arial, sans-serif; font-size: 13px; margin-top: 10px; }
   .more a { color: #111; font-weight: bold; }
   footer { border-top: 2px solid #111; margin-top: 34px; padding-top: 14px; font-family: Arial, sans-serif; font-size: 12px; text-align: center; color: #333; }
-  @media (max-width: 640px) { h1.masthead { font-size: 46px; } .lanes { grid-template-columns: 1fr; } .dateline { flex-direction: column; text-align: center; gap: 2px; } }
+  @media (max-width: 640px) { h1.masthead { font-size: 46px; } .lanes { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -53,8 +53,8 @@
   <header>
     <div class="rule-top"></div>
     <h1 class="masthead"><a href="index.html">Around the U.S.</a></h1>
-    <div class="dateline"><span id="dateline-date"></span><span>Black &amp; white edition</span></div>
-    <div class="nav"><a href="index.html" class="here">Front Page</a> &bull; <a href="texas.html">Texas</a> &bull; <a href="vermont.html">Vermont</a> &bull; <a href="across-us.html">Across the U.S.</a> &bull; <a href="inspiration.html">Inspiration</a></div>
+    <div class="dateline"><span id="dateline-date"></span> &bull; Black &amp; white edition</div>
+    <div class="nav"><a href="index.html" class="here">Front Page</a><a href="texas.html">Texas</a><a href="vermont.html">Vermont</a><a href="across-us.html">Across the U.S.</a><a href="inspiration.html">Inspiration</a></div>
   </header>
 
   <div class="inspiration">
