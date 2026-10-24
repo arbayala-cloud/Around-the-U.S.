@@ -102,6 +102,22 @@
   body.dark .menu-group { color: #aaa; }
   body.dark .menu-row button { background: #1c1c1c; color: #eee; border-color: #eee; }
   body.dark .menu-row button.active { background: #eee; color: #111; }
+
+  .menubtn { position: fixed; top: 10px; left: 10px; z-index: 80; font-family: Arial, sans-serif; font-size: 13px; letter-spacing: 1px; background: #fff; color: #111; border: 2px solid #111; padding: 7px 12px; cursor: pointer; box-shadow: 2px 2px 0 #111; }
+  .scrim { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.35); z-index: 85; }
+  .scrim.open { display: block; }
+  .drawer { position: fixed; top: 0; left: 0; height: 100%; width: 260px; max-width: 82vw; background: #fff; border-right: 2px solid #111; z-index: 90; transform: translateX(-105%); transition: transform .25s ease; padding: 12px 0 20px; overflow-y: auto; text-align: left; }
+  .drawer.open { transform: translateX(0); box-shadow: 4px 0 14px rgba(0,0,0,.3); }
+  .drawer-head { display: flex; justify-content: space-between; align-items: center; padding: 2px 14px 10px; font-family: 'Playfair Display', Georgia, serif; font-weight: 900; font-size: 18px; color: #111; border-bottom: 3px double #111; margin-bottom: 6px; }
+  .drawer-x { font-family: Arial, sans-serif; font-size: 14px; background: #fff; color: #111; border: 2px solid #111; padding: 3px 9px; cursor: pointer; }
+  .drawer a { display: block; padding: 10px 14px; color: #111; text-decoration: none; font-family: Arial, sans-serif; font-size: 15px; border-bottom: 1px solid #ddd; }
+  .drawer a.active { font-weight: bold; background: #f0f0f0; }
+  body.dark .menubtn { background: #1c1c1c; color: #eee; border-color: #eee; box-shadow: 2px 2px 0 #000; }
+  body.dark .drawer { background: #1c1c1c; border-right-color: #eee; }
+  body.dark .drawer-head { color: #f2f2f2; border-bottom-color: #eee; }
+  body.dark .drawer-x { background: #1c1c1c; color: #eee; border-color: #eee; }
+  body.dark .drawer a { color: #eee; border-bottom-color: #444; }
+  body.dark .drawer a.active { background: #333; }
 </style>
 </head>
 <body>
@@ -110,7 +126,8 @@
     <div class="rule-top"></div>
     <h1 class="masthead"><a href="index.html">Around the U.S.</a></h1>
     <div class="dateline">Around the U.S. &bull; Texas Edition</div>
-    <div class="menuwrap"><button class="menubtn" id="menuBtn" onclick="ausMenu(event)">&#9776; Menu</button><div class="menu" id="ausMenu">
+    <button class="menubtn" id="menuBtn" onclick="ausMenu(event)">&#9776; Menu</button><div class="scrim" id="ausScrim" onclick="ausMenu()"></div><aside class="drawer" id="ausMenu">
+<div class="drawer-head"><span>Around the U.S.</span><button class="drawer-x" onclick="ausMenu()">&#10005;</button></div>
 <div class="menu-group">Sections</div>
 <a href="index.html">Front Page</a>
 <a href="texas.html" class="active">Texas</a>
@@ -119,7 +136,7 @@
 <a href="inspiration.html">Inspiration &mdash; All 365 Days</a>
 <div class="menu-group">Reading</div>
 <div class="menu-row"><button id="themeBtn" onclick="ausTheme()">&#9790; Dark</button><button data-fs="s" onclick="ausFont('s')">A&#8722;</button><button data-fs="m" onclick="ausFont('m')">A</button><button data-fs="l" onclick="ausFont('l')">A+</button></div>
-</div></div>
+</aside>
   </header>
 <section>
     <h2>Texas</h2>
@@ -138,8 +155,8 @@ window.ausFont=function(s){document.body.classList.remove('font-s');document.bod
 mark();})();
 </script>
 <script>
-window.ausMenu=function(ev){if(ev)ev.stopPropagation();var m=document.getElementById('ausMenu');if(m)m.classList.toggle('open');};
-document.addEventListener('click',function(e){var w=document.querySelector('.menuwrap');var m=document.getElementById('ausMenu');if(m&&w&&!w.contains(e.target))m.classList.remove('open');});
+window.ausMenu=function(ev){if(ev)ev.stopPropagation();var m=document.getElementById('ausMenu');var s=document.getElementById('ausScrim');if(m)m.classList.toggle('open');if(s)s.classList.toggle('open');};
+document.addEventListener('click',function(e){var m=document.getElementById('ausMenu');var s=document.getElementById('ausScrim');var b=document.getElementById('menuBtn');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&e.target!==b&&!(b&&b.contains(e.target))){m.classList.remove('open');if(s)s.classList.remove('open');}});
 </script>
 </body>
 </html>
