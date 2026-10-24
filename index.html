@@ -15,6 +15,9 @@
   .inspiration { background: #111; color: #fff; padding: 22px; margin: 22px 0 30px; }
   .inspiration h2, section h2 { margin: 0 0 10px; font-family: Arial, sans-serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
   .inspiration p { margin: 0; font-size: 22px; line-height: 1.35; }
+  .inspiration .ref { margin-top: 10px; font-family: Arial, sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+  .inspiration .fulllink { margin-top: 14px; font-family: Arial, sans-serif; font-size: 13px; }
+  .inspiration .fulllink a { color: #fff; }
   section { border-top: 2px solid #111; padding-top: 18px; margin-top: 26px; }
   section h2 { font-size: 22px; letter-spacing: 1px; }
   .lanes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
@@ -41,7 +44,7 @@
 
   <div class="inspiration">
     <h2>Inspiration of the Day</h2>
-    <p>Set the inspiration of the day here.</p>
+    <p id="insp-text">This is the day which the LORD hath made; we will rejoice and be glad in it.</p><div class="ref" id="insp-ref">Psalm 118:24 (KJV)</div><div class="fulllink"><a href="inspiration.html">See all 365 days &rarr;</a></div>
   </div>
 
   <section>
@@ -70,8 +73,19 @@
 
   <footer>Black &amp; white foundation &mdash; more to come, step by step.</footer>
 </main>
+<script src="inspirations.js"></script>
 <script>
   document.getElementById('today').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+  (function(){
+    var now = new Date();
+    var key = (now.getMonth() + 1) + '-' + now.getDate();
+    var e = window.INSPIRATIONS && window.INSPIRATIONS[key];
+    if (e) {
+      document.getElementById('insp-text').textContent = e.v;
+      document.getElementById('insp-ref').textContent = e.r + ' (KJV)';
+    }
+  })();
 </script>
 </body>
 </html>
