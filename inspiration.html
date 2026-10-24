@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inspiration of the Day — 365 Days | Around the U.S.</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Georgia, 'Times New Roman', serif; background: #ffffff; color: #111111; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 28px 18px 48px; }
+  header { border-bottom: 4px solid #111; padding-bottom: 14px; margin-bottom: 22px; text-align: center; }
+  h1 { margin: 0; font-size: 36px; letter-spacing: 1px; text-transform: uppercase; }
+  .tagline { margin-top: 8px; font-family: Arial, sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+  .back { margin-top: 12px; font-family: Arial, sans-serif; font-size: 13px; }
+  .back a, .months a { color: #111; }
+  .months { text-align: center; font-family: Arial, sans-serif; font-size: 13px; line-height: 2; margin-bottom: 10px; }
+  section { border-top: 2px solid #111; padding-top: 18px; margin-top: 26px; }
+  section h2 { margin: 0 0 4px; font-size: 22px; letter-spacing: 1px; text-transform: uppercase; }
+  .theme { font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #333; margin-bottom: 14px; }
+  .day { border: 1px solid #111; padding: 14px; margin-bottom: 12px; background: #fff; }
+  .day .d { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .day .v { font-size: 18px; line-height: 1.45; margin: 0 0 8px; }
+  .day .r { font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #333; }
+  footer { border-top: 2px solid #111; margin-top: 34px; padding-top: 14px; font-family: Arial, sans-serif; font-size: 12px; text-align: center; color: #333; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <h1>Inspiration of the Day</h1>
+    <div class="tagline">365 Days &bull; King James Version</div>
+    <div class="back"><a href="index.html">&larr; Back to Around the U.S.</a></div>
+  </header>
+
+  <nav class="months" id="monthnav"></nav>
+  <div id="year"></div>
+
+  <footer>One verse for every day of the year &mdash; Around the U.S.</footer>
+</main>
+<script src="inspirations.js"></script>
+<script>
+  var MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DAYS = [31,28,31,30,31,30,31,31,30,31,30,31];
+  var nav = document.getElementById('monthnav');
+  var year = document.getElementById('year');
+  MONTH_NAMES.forEach(function(name, i){
+    var a = document.createElement('a');
+    a.href = '#m' + (i+1);
+    a.textContent = name;
+    nav.appendChild(a);
+    nav.appendChild(document.createTextNode(' \u00B7 '));
+  });
+  MONTH_NAMES.forEach(function(name, i){
+    var m = i + 1;
+    var sec = document.createElement('section');
+    sec.id = 'm' + m;
+    var h = document.createElement('h2');
+    h.textContent = name;
+    sec.appendChild(h);
+    var th = document.createElement('div');
+    th.className = 'theme';
+    th.textContent = (window.INSPIRATION_THEMES || {})[m] || '';
+    sec.appendChild(th);
+    function addDay(dayNum, label){
+      var e = (window.INSPIRATIONS || {})[m + '-' + dayNum];
+      if (!e) return;
+      var div = document.createElement('div');
+      div.className = 'day';
+      var d = document.createElement('div');
+      d.className = 'd';
+      d.textContent = label;
+      var v = document.createElement('p');
+      v.className = 'v';
+      v.textContent = e.v;
+      var r = document.createElement('div');
+      r.className = 'r';
+      r.textContent = e.r + ' (KJV)';
+      div.appendChild(d); div.appendChild(v); div.appendChild(r);
+      sec.appendChild(div);
+    }
+    for (var dnum = 1; dnum <= DAYS[i]; dnum++){
+      addDay(dnum, name + ' ' + dnum);
+    }
+    if (m === 2){ addDay(29, 'February 29 (leap years)'); }
+    year.appendChild(sec);
+  });
+</script>
+</body>
+</html>
