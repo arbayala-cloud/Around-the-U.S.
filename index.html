@@ -204,7 +204,7 @@ document.addEventListener('click',function(e){var m=document.getElementById('aus
 (function(){
 var box=document.getElementById('weatherText');var input=document.getElementById('zipInput');
 function show(t){if(box)box.textContent=t;}
-function fmt(p){var t=p.temperature;var u=p.temperatureUnit||'F';var s=p.shortForecast||'';var w='';if(p.windSpeed)w=' \u00B7 Wind '+p.windDirection+' '+p.windSpeed;return t+'\u00B0'+u+' '+s+w;}
+function iconFor(p){var s=(p.shortForecast||'').toLowerCase();var night=!p.isDaytime;if(s.indexOf('thunder')>=0||s.indexOf('lightning')>=0)return '\u26C8\uFE0F';if(s.indexOf('snow')>=0||s.indexOf('sleet')>=0||s.indexOf('blizzard')>=0){if(s.indexOf('rain')>=0)return '\uD83C\uDF28\uFE0F';return '\u2744\uFE0F';}if(s.indexOf('rain')>=0||s.indexOf('shower')>=0||s.indexOf('drizzle')>=0)return '\uD83C\uDF27\uFE0F';if(s.indexOf('fog')>=0||s.indexOf('mist')>=0||s.indexOf('haze')>=0||s.indexOf('smoke')>=0)return '\uD83C\uDF2B\uFE0F';if(s.indexOf('wind')>=0||s.indexOf('blustery')>=0||s.indexOf('breezy')>=0)return '\uD83D\uDCA8';if(s.indexOf('partly')>=0)return night?'\u2601\uFE0F':'\u26C5';if(s.indexOf('mostly cloudy')>=0||s.indexOf('cloudy')>=0||s.indexOf('overcast')>=0)return '\u2601\uFE0F';if(s.indexOf('clear')>=0||s.indexOf('sunny')>=0)return night?'\uD83C\uDF19':'\u2600\uFE0F';return '\u26C5';}function fmt(p){var t=p.temperature;var u=p.temperatureUnit||'F';var s=p.shortForecast||'';var w='';if(p.windSpeed)w=' \u00B7 Wind '+p.windDirection+' '+p.windSpeed;return iconFor(p)+' '+t+'\u00B0'+u+' '+s+w;}
 async function load(zip){
   show('Checking weather for '+zip+'\u2026');
   try{
