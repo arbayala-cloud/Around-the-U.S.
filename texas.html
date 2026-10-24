@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Texas | Around the U.S.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Bitter:wght@700;900&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; background: #fdfdfc; color: #161616; font-family: Georgia, 'Times New Roman', serif; -webkit-font-smoothing: antialiased; }
@@ -16,15 +16,15 @@
   .dateline { margin-top: 14px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; letter-spacing: 2.2px; text-transform: uppercase; color: #444; text-align: center; }
   .rule-top { border-top: 3px solid #111; border-bottom: 1px solid #111; height: 4px; margin-top: 10px; }
   section { margin-top: 38px; }
-  section h2 { margin: 0 0 14px; font-family: 'Playfair Display', Georgia, serif; font-weight: 900; font-size: 27px; letter-spacing: .2px; color: #111; border-bottom: 2px solid #111; padding-bottom: 10px; }
+  section h2 { margin: 0 0 14px; font-family: 'Bitter', Georgia, serif; font-weight: 900; font-size: 27px; letter-spacing: .2px; color: #111; border-bottom: 2px solid #111; padding-bottom: 10px; }
   section h2 a { color: #111; text-decoration: none; }
   .label { display: inline-block; font-family: Arial, Helvetica, sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase; color: #111; margin-bottom: 8px; }
-  .topstory-title { margin: 2px 0 12px; font-family: 'Playfair Display', Georgia, serif; font-weight: 900; font-size: 36px; line-height: 1.16; }
+  .topstory-title { margin: 2px 0 12px; font-family: 'Bitter', Georgia, serif; font-weight: 900; font-size: 36px; line-height: 1.16; }
   .topstory-title a { color: #111; text-decoration: none; }
   .topstory-title a:hover, .teaser-title a:hover, .story-title a:hover { text-decoration: underline; text-underline-offset: 3px; }
-  .teaser-title { margin: 2px 0 6px; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 21px; line-height: 1.25; }
+  .teaser-title { margin: 2px 0 6px; font-family: 'Bitter', Georgia, serif; font-weight: 700; font-size: 21px; line-height: 1.25; }
   .teaser-title a { color: #111; text-decoration: none; }
-  .story-title { margin: 2px 0 8px; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 20px; line-height: 1.3; }
+  .story-title { margin: 2px 0 8px; font-family: 'Bitter', Georgia, serif; font-weight: 700; font-size: 20px; line-height: 1.3; }
   .story-title a { color: #111; text-decoration: none; }
   .story-note { margin: 0; font-size: 16px; line-height: 1.6; color: #2b2b2b; }
   .story-meta { margin-top: 10px; font-family: Arial, Helvetica, sans-serif; font-size: 10.5px; letter-spacing: 1.8px; text-transform: uppercase; color: #8a8a8a; }
@@ -43,7 +43,7 @@
   .inspiration .ref { margin-top: 6px; font-family: Arial, Helvetica, sans-serif; font-size: 9.5px; letter-spacing: 2.2px; text-transform: uppercase; color: #8a8a8a; }
   .inspiration .fulllink { margin-top: 7px; font-family: Arial, Helvetica, sans-serif; font-size: 10px; letter-spacing: 1.6px; text-transform: uppercase; }
   .inspiration .fulllink a { color: #111; text-decoration: none; border-bottom: 1px solid #bbb; padding-bottom: 1px; }
-  footer { border-top: 1px solid #ddd; margin-top: 46px; padding-top: 16px; font-family: Arial, Helvetica, sans-serif; font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; text-align: center; color: #999; }
+  footer { border-top: 3px double #111; margin-top: 46px; padding-top: 16px; font-family: Arial, Helvetica, sans-serif; font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; text-align: center; color: #999; }
 
   .menubtn { position: static; flex-shrink: 0; z-index: 80; font-family: Arial, Helvetica, sans-serif; font-size: 19px; line-height: 1; background: none; color: #111; border: none; border-radius: 0; padding: 8px 4px; cursor: pointer; box-shadow: none; }
   .menubtn:hover { background: none; color: #555; border-color: transparent; }
@@ -105,7 +105,7 @@
   body.dark .inspiration p { color: #e6e6e6; }
   body.dark .inspiration .ref { color: #7d7d7d; }
   body.dark .inspiration .fulllink a { color: #f4f4f4; border-bottom-color: #555; }
-  body.dark footer { border-top-color: #262626; color: #6f6f6f; }
+  body.dark footer { border-top-color: #555; color: #6f6f6f; }
   @media (max-width: 640px) { h1.masthead { font-size: 38px; } .wrap { padding: 26px 16px 40px; } .lanes { grid-template-columns: 1fr; } .topstory-title { font-size: 29px; } section h2 { font-size: 23px; } .inspiration { width: 78%; } }
 
   .nameplate { display: flex; align-items: center; gap: 16px; }
@@ -122,6 +122,7 @@
 
   .card .story + .story { border-top: 1px solid #e6e6e3; margin-top: 20px; padding-top: 20px; }
   body.dark .card .story + .story { border-top-color: #262626; }
+  @media (min-width: 641px) { .story-note { text-align: justify; hyphens: auto; } }
 </style>
 </head>
 <body>
@@ -139,6 +140,7 @@
 <a href="inspiration.html">Inspiration &mdash; All 365 Days</a>
 <div class="menu-row"><button id="themeBtn" onclick="ausTheme()">&#9790; Dark</button><button data-fs="s" onclick="ausFont('s')">A&#8722;</button><button data-fs="m" onclick="ausFont('m')">A</button><button data-fs="l" onclick="ausFont('l')">A+</button></div>
 </aside>
+    <div class="rule-top"></div>
   </header>
 <section>
     <h2>Texas</h2>
@@ -146,7 +148,7 @@
     <div class="lanes"><div class="card"><span class="label">Crime</span><div class="story"><h3 class="story-title"><a href="https://www.fdd.org/analysis/fbi-arrests-alleged-islamic-state-supporter-accused-of-plotting-to-assassinate-texas-congressman/">FBI stopped alleged ISIS plot against Rep. Keith Self, reports say</a></h3><p class="story-note">Federal agents arrested a 17-year-old from McKinney on Oct. 5 after he obtained a firearm, law enforcement sources told local and national outlets this week. Investigators believe the teenager, who had recently been radicalized and was under federal surveillance, planned to target Rep. Keith Self at an Oct. 17 veterans chili cook-off fundraiser and was also preparing a separate ISIS-inspired attack in North Texas. Capitol Police notified Self after the arrest; he attended the fundraiser as scheduled with added security. The suspect’s name has not been released because he is a juvenile, and he remains in federal custody.</p><div class="story-meta">Oct. 23, 2026 &bull; McKinney</div><div class="sources">Read it: <a href="https://www.fdd.org/analysis/fbi-arrests-alleged-islamic-state-supporter-accused-of-plotting-to-assassinate-texas-congressman/">FDD’s Long War Journal</a> &middot; <a href="https://www.washingtonexaminer.com/news/justice/4776490/17-year-old-arrested-accused-of-isis-backed-assassination-plot-against-rep-keith-self/">Washington Examiner</a></div></div></div><div class="card"><span class="label">Politics</span><div class="story"><h3 class="story-title"><a href="https://www.thebrief.news/en/standard/article/36010/talarico-says-texas-is-not-for-sale-at-austin-rally-targeting-musk">Talarico tells Austin rally: “Texas is not for sale”</a></h3><p class="story-note">Democratic Senate candidate James Talarico packed an auditorium at his alma mater, the University of Texas at Austin, on Friday and made billionaire spending the center of his closing pitch. He told the crowd Elon Musk is “almost single-handedly bankrolling” the effort to put his opponent, Attorney General Ken Paxton, in the Senate, and said attack ads, mailers, and texts against him traced back to Musk. Talarico contrasted his own fundraising — his campaign says $64 million raised in the third quarter, nearly all of it in small donations — with what he called “one dude” behind Paxton. Election Day is Nov. 3.</p><div class="story-meta">Oct. 23, 2026 &bull; Austin</div><div class="sources">Read it: <a href="https://www.thebrief.news/en/standard/article/36010/talarico-says-texas-is-not-for-sale-at-austin-rally-targeting-musk">The Brief</a></div></div><div class="story"><h3 class="story-title"><a href="https://www.reuters.com/legal/government/detained-migrants-have-no-constitutional-right-bond-hearings-us-court-rules-2026-10-23/">Fifth Circuit: Constitution does not require bond hearings for detained migrants</a></h3><p class="story-note">In a 10-7 ruling, the New Orleans-based Fifth Circuit held that the Constitution’s due process protections do not require bond hearings for immigrants detained while facing removal — reversing its own July panel decision. The ruling covers Texas, Louisiana, and Mississippi, and if it stands, it closes a major path to release arguments for detainees in those states. The Supreme Court has separately agreed to decide whether federal statute requires such hearings, a different question from the constitutional one the Fifth Circuit answered.</p><div class="story-meta">Oct. 23, 2026 &bull; New Orleans</div><div class="sources">Read it: <a href="https://www.reuters.com/legal/government/detained-migrants-have-no-constitutional-right-bond-hearings-us-court-rules-2026-10-23/">Reuters</a></div></div><div class="story"><h3 class="story-title"><a href="https://lubbocklights.com/ledger-2026-10-24/">Abbott plans Lubbock get-out-the-vote stop on final day of early voting</a></h3><p class="story-note">Gov. Greg Abbott is set to visit Lubbock on Friday, Oct. 30 — the last day of early voting — for a get-out-the-vote event, according to Lubbock Lights, which cited a source close to the governor’s office and an online invitation listing a 12:15 p.m. start. The campaign had not independently confirmed the appearance when the outlet reported it Friday. Election Day is Tuesday, Nov. 3.</p><div class="story-meta">Oct. 24, 2026 &bull; Lubbock</div><div class="sources">Read it: <a href="https://lubbocklights.com/ledger-2026-10-24/">Lubbock Lights</a></div></div></div></div>
   </section>
 
-<footer><div class="foot-name">Around the U.S.</div><div class="foot-nav"><a href="index.html">Front Page</a> &nbsp;&middot;&nbsp; <a href="texas.html">Texas</a> &nbsp;&middot;&nbsp; <a href="vermont.html">Vermont</a> &nbsp;&middot;&nbsp; <a href="across-us.html">Across the U.S.</a> &nbsp;&middot;&nbsp; <a href="inspiration.html">Inspiration</a></div><div class="foot-note">Black &amp; white edition &bull; Stories link to their original sources.</div></footer>
+<footer><div class="foot-name">Around the U.S.</div><div class="foot-nav"><a href="index.html">Front Page</a> &nbsp;&middot;&nbsp; <a href="texas.html">Texas</a> &nbsp;&middot;&nbsp; <a href="vermont.html">Vermont</a> &nbsp;&middot;&nbsp; <a href="across-us.html">Across the U.S.</a> &nbsp;&middot;&nbsp; <a href="inspiration.html">Inspiration</a></div><div class="foot-note">&copy; 2026 Around the U.S. &bull; Black &amp; white edition &bull; Stories link to their original sources.</div></footer>
 </main>
 
 <script>
