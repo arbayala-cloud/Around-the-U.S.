@@ -208,13 +208,14 @@ function fmt(p){var t=p.temperature;var u=p.temperatureUnit||'F';var s=p.shortFo
 async function load(zip){
   show('Checking weather for '+zip+'\u2026');
   try{
-    var g=await fetch('https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address='+encodeURIComponent(zip)+'&benchmark=Public_AR_Current&format=json');
+    var g=await fetch('https://nominatim.openstreetmap.org/search?postalcode='+encodeURIComponent(zip)+'&country=us&format=json&addressdetails=1&limit=1');
     var gj=await g.json();
-    var m=gj&&gj.result&&gj.result.addressMatches&&gj.result.addressMatches[0];
-    if(!m)throw new Error('notfound');
-    var lon=m.coordinates.x,lat=m.coordinates.y;
-    var ac=m.addressComponents||{};
-    var place=(ac.city?ac.city+', ':'')+(ac.state||'');
+    if(!gj||!gj.length)throw new Error('notfound');
+    var r=gj[0];
+    var lat=parseFloat(r.lat),lon=parseFloat(r.lon);
+    var ad=r.address||{};
+    var city=ad.city||ad.town||ad.village||ad.hamlet||'';
+    var place=city+(ad.state?', '+ad.state:'');
     var pt=await fetch('https://api.weather.gov/points/'+lat.toFixed(4)+','+lon.toFixed(4),{headers:{'Accept':'application/geo+json'}});
     var pj=await pt.json();
     var furl=pj&&pj.properties&&pj.properties.forecast;
