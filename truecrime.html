@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>True Crime | The Saint &amp; Star</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Bitter:wght@700;900&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #fdfdfc; color: #161616; font-family: Georgia, 'Times New Roman', serif; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 20px 22px 48px; }
+  header { text-align: center; }
+  h1.masthead { margin: 0; font-family: 'UnifrakturMaguntia', Georgia, serif; font-weight: 400; font-size: 74px; line-height: 1.05; color: #111; }
+  h1.masthead a { color: #111; text-decoration: none; }
+  .dateline { margin-top: 14px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; letter-spacing: 2.2px; text-transform: uppercase; color: #444; text-align: center; }
+  .rule-top { border-top: 3px solid #111; border-bottom: 1px solid #111; height: 4px; margin-top: 10px; }
+  section { margin-top: 38px; }
+  section h2 { margin: 0 0 14px; font-family: 'Bitter', Georgia, serif; font-weight: 900; font-size: 27px; letter-spacing: .2px; color: #111; border-bottom: 2px solid #111; padding-bottom: 10px; }
+  section h2 a { color: #111; text-decoration: none; }
+  .label { display: inline-block; font-family: Arial, Helvetica, sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase; color: #111; margin-bottom: 8px; }
+  .topstory-title { margin: 2px 0 12px; font-family: 'Bitter', Georgia, serif; font-weight: 900; font-size: 36px; line-height: 1.16; }
+  .topstory-title a { color: #111; text-decoration: none; }
+  @media (hover: hover) { .topstory-title a:hover, .teaser-title a:hover, .story-title a:hover { text-decoration: underline; text-underline-offset: 3px; } }
+  .teaser-title { margin: 2px 0 6px; font-family: 'Bitter', Georgia, serif; font-weight: 700; font-size: 21px; line-height: 1.25; }
+  .teaser-title a { color: #111; text-decoration: none; }
+  .story-title { margin: 2px 0 8px; font-family: 'Bitter', Georgia, serif; font-weight: 700; font-size: 20px; line-height: 1.3; }
+  .story-title a { color: #111; text-decoration: none; }
+  .story-note { margin: 0; font-size: 16px; line-height: 1.6; color: #2b2b2b; }
+  .story-meta { margin-top: 10px; font-family: Arial, Helvetica, sans-serif; font-size: 10.5px; letter-spacing: 1.8px; text-transform: uppercase; color: #8a8a8a; }
+  .sources { margin-top: 8px; font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; color: #666; }
+  .sources a { color: #161616; text-decoration: underline; text-underline-offset: 2px; }
+  .more { margin-top: 12px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; }
+  .more a { color: #111; text-decoration: none; border-bottom: 1px solid #111; padding-bottom: 2px; }
+  .hl-item { padding: 15px 0; border-bottom: 1px solid #e6e6e3; }
+  .hl-item:last-of-type { border-bottom: none; }
+  .lanes { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .card { border-top: 2px solid #111; padding: 14px 0 4px; background: transparent; }
+  .empty { font-style: italic; color: #8a8a8a; font-size: 15px; }
+  .inspiration { width: 62%; max-width: 400px; margin: 22px auto 4px; text-align: center; background: #f7f6f2; border: 1px solid #e3e1da; border-top: 3px solid #111; padding: 12px 14px 11px; }
+  .inspiration h2 { margin: 0 0 6px; font-family: Arial, Helvetica, sans-serif; font-size: 9.5px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #777; }
+  .inspiration p { margin: 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 13.5px; line-height: 1.45; color: #222; }
+  .inspiration .ref { margin-top: 6px; font-family: Arial, Helvetica, sans-serif; font-size: 9.5px; letter-spacing: 2.2px; text-transform: uppercase; color: #8a8a8a; }
+  .inspiration .fulllink { margin-top: 7px; font-family: Arial, Helvetica, sans-serif; font-size: 10px; letter-spacing: 1.6px; text-transform: uppercase; }
+  .inspiration .fulllink a { color: #111; text-decoration: none; border-bottom: 1px solid #bbb; padding-bottom: 1px; }
+  footer { border-top: 3px double #111; margin-top: 46px; padding-top: 16px; font-family: Arial, Helvetica, sans-serif; font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; text-align: center; color: #999; }
+
+  .menubtn { position: static; flex-shrink: 0; z-index: 80; font-family: Arial, Helvetica, sans-serif; font-size: 19px; line-height: 1; background: none; color: #111; border: none; border-radius: 0; width: 32px; padding: 8px 0; text-align: center; cursor: pointer; box-shadow: none; }
+  .menubtn:hover { background: none; color: #555; border-color: transparent; }
+  .scrim { display: none; position: fixed; inset: 0; background: rgba(20,20,20,.42); z-index: 85; }
+  .scrim.open { display: block; }
+  .drawer { position: fixed; top: 0; left: 0; height: 100%; width: 272px; max-width: 84vw; background: #fff; border-right: 1px solid #e2e2e2; z-index: 90; transform: translateX(-105%); transition: transform .28s ease; padding: 16px 0 26px; overflow-y: auto; text-align: left; }
+  .drawer.open { transform: translateX(0); box-shadow: 0 0 30px rgba(0,0,0,.22); }
+  .drawer-head { display: flex; justify-content: flex-end; padding: 0 16px 8px; }
+  .drawer-x { font-family: Arial, Helvetica, sans-serif; font-size: 13px; background: none; color: #555; border: none; padding: 4px 6px; cursor: pointer; }
+  .drawer-x:hover { color: #111; }
+  .drawer a { display: block; padding: 11px 22px; color: #161616; text-decoration: none; font-family: Arial, Helvetica, sans-serif; font-size: 15px; }
+  .drawer a:hover { background: #f7f6f2; }
+  .drawer a.active { font-weight: 700; box-shadow: inset 3px 0 0 #111; background: #f7f6f2; }
+  .menu-row { display: flex; gap: 8px; padding: 18px 22px 4px; margin-top: 14px; border-top: 1px solid #eee; }
+  .menu-row button { font-family: Arial, Helvetica, sans-serif; font-size: 12px; background: #fff; color: #161616; border: 1px solid #c9c9c9; border-radius: 3px; padding: 6px 11px; cursor: pointer; }
+  .menu-row button.active { background: #111; color: #fff; border-color: #111; }
+  body.dark .menubtn { background: none; color: #eee; border-color: transparent; box-shadow: none; }
+  body.dark .menubtn:hover { background: none; color: #bbb; }
+  body.dark .drawer { background: #141414; border-right-color: #2b2b2b; }
+  body.dark .drawer-x { color: #9a9a9a; }
+  body.dark .drawer a { color: #e9e9e9; }
+  body.dark .drawer a:hover, body.dark .drawer a.active { background: #1e1e1e; }
+  body.dark .drawer a.active { box-shadow: inset 3px 0 0 #e9e9e9; }
+  body.dark .menu-row { border-top-color: #2b2b2b; }
+  body.dark .menu-row button { background: #171717; color: #e9e9e9; border-color: #3d3d3d; }
+  body.dark .menu-row button.active { background: #e9e9e9; color: #111; border-color: #e9e9e9; }
+
+  body.font-s .story-note { font-size: 14px; }
+  body.font-l .story-note { font-size: 19px; }
+  body.font-s .teaser-title { font-size: 19px; }
+  body.font-l .teaser-title { font-size: 25px; }
+  body.font-s .story-title { font-size: 18px; }
+  body.font-l .story-title { font-size: 24px; }
+  body.font-s .topstory-title { font-size: 30px; }
+  body.font-l .topstory-title { font-size: 42px; }
+  body.font-s .inspiration p { font-size: 12px; }
+  body.font-l .inspiration p { font-size: 16px; }
+  body.font-s .day .v { font-size: 15px; }
+  body.font-l .day .v { font-size: 20px; }
+
+  body.dark { background: #101010; color: #e9e9e9; }
+  body.dark h1.masthead, body.dark h1.masthead a { color: #f4f4f4; }
+  body.dark .dateline { color: #9a9a9a; }
+  body.dark .rule-top { border-top-color: #e9e9e9; border-bottom-color: #e9e9e9; }
+  body.dark section h2 { color: #f4f4f4; border-bottom-color: #e9e9e9; }
+  body.dark section h2 a { color: #f4f4f4; }
+  body.dark .label { color: #e9e9e9; }
+  body.dark .topstory-title a, body.dark .teaser-title a, body.dark .story-title a { color: #f4f4f4; }
+  body.dark .story-note { color: #c9c9c9; }
+  body.dark .story-meta { color: #7d7d7d; }
+  body.dark .sources { color: #9a9a9a; }
+  body.dark .sources a { color: #e9e9e9; }
+  body.dark .more a { color: #f4f4f4; border-bottom-color: #f4f4f4; }
+  body.dark .hl-item { border-bottom-color: #262626; }
+  body.dark .card { border-top-color: #e9e9e9; }
+  body.dark .empty { color: #7d7d7d; }
+  body.dark .inspiration { background: #171717; border-color: #2b2b2b; border-top-color: #e9e9e9; }
+  body.dark .inspiration h2 { color: #8a8a8a; }
+  body.dark .inspiration p { color: #e6e6e6; }
+  body.dark .inspiration .ref { color: #7d7d7d; }
+  body.dark .inspiration .fulllink a { color: #f4f4f4; border-bottom-color: #555; }
+  body.dark footer { border-top-color: #555; color: #6f6f6f; }
+  @media (max-width: 640px) { h1.masthead { font-size: 30px; } .wrap { padding: 26px 16px 40px; } .lanes { grid-template-columns: 1fr; } .topstory-title { font-size: 29px; } section h2 { font-size: 23px; } .inspiration { width: 78%; } }
+
+  .nameplate { display: flex; align-items: center; gap: 16px; }
+  .nameplate .masthead, .nameplate h1 { flex: 1; text-align: center; }
+  .namespacer { flex-shrink: 0; width: 32px; }
+  @media (max-width: 640px) { .nameplate { gap: 12px; } }
+
+  .foot-name { font-size: 12px; letter-spacing: 3px; color: #555; margin-bottom: 8px; }
+  .foot-nav { margin-bottom: 8px; }
+  .foot-nav a { color: #777; text-decoration: none; }
+  .foot-nav a:hover { text-decoration: underline; }
+  .foot-note { color: #999; }
+  body.dark .foot-name { color: #aaa; }
+  body.dark .foot-nav a { color: #888; }
+
+  .card .story + .story { border-top: 1px solid #e6e6e3; margin-top: 20px; padding-top: 20px; }
+  body.dark .card .story + .story { border-top-color: #262626; }
+  @media (min-width: 641px) { .story-note { text-align: justify; hyphens: auto; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <div class="rule-top"></div>
+    <div class="nameplate"><button class="menubtn" id="menuBtn" aria-label="Open menu" onclick="ausMenu(event)">&#9776;</button><h1 class="masthead"><a href="index.html">The Saint &amp; Star</a></h1><span class="namespacer" aria-hidden="true"></span></div>
+    <div class="dateline">The Saint &amp; Star &bull; True Crime Edition</div>
+    <div class="scrim" id="ausScrim" onclick="ausMenu()"></div><aside class="drawer" id="ausMenu">
+<div class="drawer-head"><button class="drawer-x" aria-label="Close menu" onclick="ausMenu()">&#10005;</button></div>
+<a href="index.html">Front Page</a>
+<a href="texas.html">Texas</a>
+<a href="vermont.html">Vermont</a>
+<a href="across-us.html">Across the U.S.</a>
+<a href="truecrime.html" class="active">True Crime</a>
+<a href="inspiration.html">Inspiration &mdash; All 365 Days</a>
+<div class="menu-row"><button id="themeBtn" onclick="ausTheme()">&#9790; Dark</button><button data-fs="s" onclick="ausFont('s')">A&#8722;</button><button data-fs="m" onclick="ausFont('m')">A</button><button data-fs="l" onclick="ausFont('l')">A+</button></div>
+</aside>
+    <div class="rule-top"></div>
+  </header>
+<section>
+    <h2>True Crime</h2>
+    <div class="story-meta" style="font-size:13px;">Around the U.S. &bull; Cold Cases &bull; Texas &bull; Vermont</div>
+    <div class="lanes"><div class="card"><span class="label">Around the U.S.</span><div class="story"><h3 class="story-title"><a href="https://www.the-sun.com/news/17196639/christa-pike-blown-veins-lawyer-timeline-botched-execution-tennessee/">Minute-by-minute account of Pike’s failed execution alarms medical experts</a></h3><p class="story-note">A minute-by-minute account from Pike’s lawyer, who was in the death chamber on Sept. 30, says the IV team took about six minutes on her right arm and nearly an hour on her left, while Pike grimaced as a needle was moved inside her arm. At 6:57 p.m. a team member said a vein “might be blowing”; at 7:07 another said “I think it’s blown”; at 7:23 saline pushed through the line “with difficulty” — and the procedure began a minute later. The team never tried the central line the protocol allows. Medical experts who reviewed the account called the IV work alarming and far below what any medical setting would accept. Tennessee’s executions remain paused through 2026, Pike’s own deadline fight still awaits a written ruling, and there is still no new execution date.</p><div class="story-meta">Oct. 24, 2026 &bull; Tennessee</div><div class="sources">Read it: <a href="https://www.the-sun.com/news/17196639/christa-pike-blown-veins-lawyer-timeline-botched-execution-tennessee/">The Sun</a> &middot; <a href="https://www.usatoday.com/story/news/crime/2026/10/23/christa-pike-execution-attempt-iv-veins/92395990007/">USA TODAY</a></div></div></div><div class="card"><span class="label">Cold Cases</span><div class="story"><h3 class="story-title"><a href="https://vsp.vermont.gov/unsolved/missing/a/maitland">Brianna Maitland, 17, vanished after her shift — and 22 years later, still no answers</a></h3><p class="story-note">Seventeen-year-old Brianna Maitland finished her dishwashing shift at the Black Lantern Inn in Montgomery on the night of March 19, 2004, and never made it home. The next day her green 1985 Oldsmobile was found backed into an abandoned building about a mile from the restaurant, her uncashed paychecks still on the seat. Days passed before anyone realized she was missing. Investigators later came to believe the crash may have been staged, and police say the case points to foul play — but more than two decades later, it remains unsolved. The FBI offers up to $40,000 for information leading to her recovery.</p><div class="story-meta">March 19, 2004 &bull; Montgomery</div><div class="sources">Read it: <a href="https://vsp.vermont.gov/unsolved/missing/a/maitland">Vermont State Police</a> &middot; <a href="https://dnasolves.com/articles/brianna_maitland/">DNASolves</a></div></div></div><div class="card"><span class="label">Texas</span><div class="story"><h3 class="story-title"><a href="https://www.fdd.org/analysis/fbi-arrests-alleged-islamic-state-supporter-accused-of-plotting-to-assassinate-texas-congressman/">FBI stopped alleged ISIS plot against Rep. Keith Self, reports say</a></h3><p class="story-note">Federal agents arrested a 17-year-old from McKinney on Oct. 5 after he obtained a firearm, law enforcement sources told local and national outlets this week. Investigators believe the teenager, who had recently been radicalized and was under federal surveillance, planned to target Rep. Keith Self at an Oct. 17 veterans chili cook-off fundraiser and was also preparing a separate ISIS-inspired attack in North Texas. Capitol Police notified Self after the arrest; he attended the fundraiser as scheduled with added security. The suspect’s name has not been released because he is a juvenile, and he remains in federal custody.</p><div class="story-meta">Oct. 23, 2026 &bull; McKinney</div><div class="sources">Read it: <a href="https://www.fdd.org/analysis/fbi-arrests-alleged-islamic-state-supporter-accused-of-plotting-to-assassinate-texas-congressman/">FDD’s Long War Journal</a> &middot; <a href="https://www.washingtonexaminer.com/news/justice/4776490/17-year-old-arrested-accused-of-isis-backed-assassination-plot-against-rep-keith-self/">Washington Examiner</a></div></div></div><div class="card"><span class="label">Vermont</span><div class="story"><h3 class="story-title"><a href="https://www.einpresswire.com/article/951299459/vsp-news-release-aggravated-assault-within-marble-valley-correctional-center">Inmate charged in Marble Valley prison assault; cellmate needed facial surgery</a></h3><p class="story-note">Vermont State Police say inmate Matthew Bradley, 41, of Rutland assaulted his cellmate Joseph Marro, 65, inside Marble Valley Correctional Center on Oct. 11. Marro&#8217;s facial injuries required surgery, including metal plates around his eyes and mouth. Bradley is due in Rutland court Nov. 23 on an aggravated assault charge; both men remain in custody.</p><div class="story-meta">Oct. 21, 2026 &bull; Rutland</div><div class="sources">Read it: <a href="https://www.einpresswire.com/article/951299459/vsp-news-release-aggravated-assault-within-marble-valley-correctional-center">VT State Police release</a></div></div></div></div>
+  </section>
+
+<footer><div class="foot-name">The Saint &amp; Star</div><div class="foot-nav"><a href="index.html">Front Page</a> &nbsp;&middot;&nbsp; <a href="texas.html">Texas</a> &nbsp;&middot;&nbsp; <a href="vermont.html">Vermont</a> &nbsp;&middot;&nbsp; <a href="across-us.html">Across the U.S.</a> &nbsp;&middot;&nbsp; <a href="truecrime.html">True Crime</a> &nbsp;&middot;&nbsp; <a href="inspiration.html">Inspiration</a></div><div class="foot-note">&copy; 2026 The Saint &amp; Star &bull; Stories link to their original sources.</div></footer>
+</main>
+
+<script>
+(function(){try{var t=localStorage.getItem('aus-theme');if(t==='dark')document.body.classList.add('dark');var f=localStorage.getItem('aus-font');if(f&&f!=='m')document.body.classList.add('font-'+f);}catch(e){}
+function mark(){var d=document.body.classList.contains('dark');var tb=document.getElementById('themeBtn');if(tb)tb.innerHTML=d?'&#9728; Light':'&#9790; Dark';var bs=document.querySelectorAll('[data-fs]');for(var i=0;i<bs.length;i++){var fs=bs[i].getAttribute('data-fs');var on=document.body.classList.contains('font-'+fs)||(fs==='m'&&!document.body.classList.contains('font-s')&&!document.body.classList.contains('font-l'));bs[i].classList.toggle('active',on);}}
+window.ausTheme=function(){document.body.classList.toggle('dark');try{localStorage.setItem('aus-theme',document.body.classList.contains('dark')?'dark':'light');}catch(e){}mark();};
+window.ausFont=function(s){document.body.classList.remove('font-s');document.body.classList.remove('font-l');if(s!=='m')document.body.classList.add('font-'+s);try{localStorage.setItem('aus-font',s);}catch(e){}mark();};
+mark();})();
+</script>
+<script>
+window.ausMenu=function(ev){if(ev)ev.stopPropagation();var m=document.getElementById('ausMenu');var s=document.getElementById('ausScrim');if(m)m.classList.toggle('open');if(s)s.classList.toggle('open');};
+document.addEventListener('click',function(e){var m=document.getElementById('ausMenu');var s=document.getElementById('ausScrim');var b=document.getElementById('menuBtn');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&e.target!==b&&!(b&&b.contains(e.target))){m.classList.remove('open');if(s)s.classList.remove('open');}});
+</script>
+</body>
+</html>
