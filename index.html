@@ -19,15 +19,16 @@
   section h2 { margin: 0 0 14px; font-family: 'Bitter', Georgia, serif; font-weight: 900; font-size: 27px; letter-spacing: .2px; color: #111; border-bottom: 2px solid #111; padding-bottom: 10px; }
   section h2 a { color: #111; text-decoration: none; }
   .label { display: inline-block; font-family: Arial, Helvetica, sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase; color: #111; margin-bottom: 8px; }
-  .topstory-title { margin: 2px 0 12px; font-family: 'Bitter', Georgia, serif; font-weight: 900; font-size: 36px; line-height: 1.16; }
+  .topstory-title { margin: 2px 0 12px; font-family: 'Bitter', Georgia, serif; font-weight: 900; font-size: 36px; line-height: 1.16; text-align: center; }
   .topstory-title a { color: #111; text-decoration: none; }
-  .topstory-title a:hover, .teaser-title a:hover, .story-title a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  @media (hover: hover) { .topstory-title a:hover, .teaser-title a:hover, .story-title a:hover { text-decoration: underline; text-underline-offset: 3px; } }
   .teaser-title { margin: 2px 0 6px; font-family: 'Bitter', Georgia, serif; font-weight: 700; font-size: 21px; line-height: 1.25; }
   .teaser-title a { color: #111; text-decoration: none; }
   .story-title { margin: 2px 0 8px; font-family: 'Bitter', Georgia, serif; font-weight: 700; font-size: 20px; line-height: 1.3; }
   .story-title a { color: #111; text-decoration: none; }
   .story-note { margin: 0; font-size: 16px; line-height: 1.6; color: #2b2b2b; }
   .story-meta { margin-top: 10px; font-family: Arial, Helvetica, sans-serif; font-size: 10.5px; letter-spacing: 1.8px; text-transform: uppercase; color: #8a8a8a; }
+  .topmeta { text-align: center; }
   .sources { margin-top: 8px; font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; color: #666; }
   .sources a { color: #161616; text-decoration: underline; text-underline-offset: 2px; }
   .more { margin-top: 12px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; }
@@ -106,7 +107,7 @@
   body.dark .inspiration .ref { color: #7d7d7d; }
   body.dark .inspiration .fulllink a { color: #f4f4f4; border-bottom-color: #555; }
   body.dark footer { border-top-color: #555; color: #6f6f6f; }
-  @media (max-width: 640px) { h1.masthead { font-size: 30px; } .wrap { padding: 26px 16px 40px; } .lanes { grid-template-columns: 1fr; } .topstory-title { font-size: 29px; } section h2 { font-size: 23px; } .inspiration { width: 78%; } }
+  @media (max-width: 640px) { h1.masthead { font-size: 30px; } .wrap { padding: 26px 16px 40px; } .lanes { grid-template-columns: 1fr; } .topstory-title { font-size: 27px; padding: 0 10px; } section h2 { font-size: 23px; } .inspiration { width: 78%; } }
 
   .weather { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; margin: 18px auto 4px; padding: 10px 14px; background: #f7f6f2; border: 1px solid #e3e1da; border-top: 3px solid #111; font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; text-align: center; color: #161616; }
   .weather .wtext { line-height: 1.5; }
@@ -171,7 +172,7 @@
     <h3 class="topstory-title"><a href="across-us.html">Minute-by-minute account of Pike’s failed execution alarms medical experts</a></h3>
     <figure class="topphoto"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/TN_State_Capitol_Building.jpg?width=880" alt="Tennessee State Capitol in Nashville"><figcaption>Tennessee State Capitol, Nashville. Photo: Blake Wylie, via Wikimedia Commons.</figcaption></figure>
     <p class="story-note topnote">A minute-by-minute account from Pike’s lawyer, who was in the death chamber on Sept. 30, says the IV team took about six minutes on her right arm and nearly an hour on her left, while Pike grimaced as a needle was moved inside her arm. At 6:57 p.m. a team member said a vein “might be blowing”; at 7:07 another said “I think it’s blown”; at 7:23 saline pushed through the line “with difficulty” — and the procedure began a minute later. The team never tried the central line the protocol allows. Medical experts who reviewed the account called the IV work alarming and far below what any medical setting would accept. Tennessee’s executions remain paused through 2026, Pike’s own deadline fight still awaits a written ruling, and there is still no new execution date.</p>
-    <div class="story-meta">Oct. 24, 2026 &bull; Tennessee &bull; Across the U.S. &mdash; Crime</div>
+    <div class="story-meta topmeta">Oct. 24, 2026 &bull; Tennessee &bull; Across the U.S. &mdash; Crime</div>
     <div class="sources">Read it: <a href="https://www.the-sun.com/news/17196639/christa-pike-blown-veins-lawyer-timeline-botched-execution-tennessee/">The Sun</a> &middot; <a href="https://www.usatoday.com/story/news/crime/2026/10/23/christa-pike-execution-attempt-iv-veins/92395990007/">USA TODAY</a></div>
     <div class="more"><a href="across-us.html">More on the Across the U.S. page &rarr;</a></div>
   </section>
