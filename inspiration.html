@@ -7,8 +7,8 @@
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; background: #fdfdfc; color: #161616; font-family: Georgia, 'Times New Roman', serif; -webkit-font-smoothing: antialiased; }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 34px 22px 48px; }
-  header { text-align: center; padding-top: 54px; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 20px 22px 48px; }
+  header { text-align: center; }
   header h1 { margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 900; font-size: 36px; color: #111; }
   .tagline { margin-top: 8px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: #666; }
   .back { margin-top: 12px; font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; }
@@ -23,7 +23,7 @@
   .day .r { margin-top: 7px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; color: #555; }
   footer { border-top: 1px solid #ddd; margin-top: 40px; padding-top: 16px; font-family: Arial, Helvetica, sans-serif; font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; text-align: center; color: #999; }
 
-  .menubtn { position: fixed; top: 20px; left: 20px; z-index: 80; font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1; background: #fff; color: #111; border: 1px solid #cfcfcf; border-radius: 3px; padding: 8px 11px; cursor: pointer; box-shadow: 0 1px 5px rgba(0,0,0,.10); }
+  .menubtn { position: static; flex-shrink: 0; z-index: 80; font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1; background: #fff; color: #111; border: 1px solid #cfcfcf; border-radius: 3px; padding: 8px 11px; cursor: pointer; box-shadow: 0 1px 5px rgba(0,0,0,.10); }
   .menubtn:hover { background: #111; color: #fff; border-color: #111; }
   .scrim { display: none; position: fixed; inset: 0; background: rgba(20,20,20,.42); z-index: 85; }
   .scrim.open { display: block; }
@@ -75,6 +75,10 @@
   body.dark .day .r { color: #a5a5a5; }
   body.dark footer { border-top-color: #262626; color: #6f6f6f; }
   @media (max-width: 640px) { .wrap { padding: 26px 16px 40px; } header h1 { font-size: 29px; } }
+
+  .nameplate { display: flex; align-items: center; gap: 16px; }
+  .nameplate .masthead, .nameplate h1 { flex: 1; }
+  @media (max-width: 640px) { .nameplate { gap: 12px; } }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
@@ -82,11 +86,11 @@
 <body>
 <main class="wrap">
   <header>
-    <h1>Inspiration of the Day</h1>
+    <div class="nameplate"><button class="menubtn" id="menuBtn" aria-label="Open menu" onclick="ausMenu(event)">&#9776;</button><h1>Inspiration of the Day</h1></div>
     <div class="tagline">365 Days &bull; King James Version</div>
     <div class="back"><a href="index.html">&larr; Back to Around the U.S.</a></div>
   </header>
-  <button class="menubtn" id="menuBtn" aria-label="Open menu" onclick="ausMenu(event)">&#9776;</button><div class="scrim" id="ausScrim" onclick="ausMenu()"></div><aside class="drawer" id="ausMenu">
+  <div class="scrim" id="ausScrim" onclick="ausMenu()"></div><aside class="drawer" id="ausMenu">
 <div class="drawer-head"><button class="drawer-x" aria-label="Close menu" onclick="ausMenu()">&#10005;</button></div>
 <a href="index.html">Front Page</a>
 <a href="texas.html">Texas</a>
