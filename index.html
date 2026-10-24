@@ -174,7 +174,7 @@
   </section>
 
 
-  <section id="otd"><h2>On This Day</h2><p class="story-note" id="otd-text">Looking back&hellip;</p><div class="more" id="otd-more" style="display:none"><a id="otd-link" href="#">More on this day &rarr;</a></div></section>
+  <section id="otd"><h2>On This Day</h2><p class="story-note" id="otd-text"></p></section>
 
   <footer>Black &amp; white edition &mdash; Around the U.S.</footer>
 </main>
@@ -275,28 +275,15 @@ var form=document.getElementById('zipForm');
 if(form)form.addEventListener('submit',function(e){e.preventDefault();var z=(input.value||'').trim();if(!/^[0-9]{5}$/.test(z)){show('Enter a 5-digit ZIP code.');return;}try{localStorage.setItem('aus-zip',z);}catch(e){}load(z);});
 })();
 </script>
+<script src="onthisday.js"></script>
 <script>
 (function(){
-var sec=document.getElementById('otd');var txt=document.getElementById('otd-text');var more=document.getElementById('otd-more');var link=document.getElementById('otd-link');
+var sec=document.getElementById('otd');var txt=document.getElementById('otd-text');
 if(!sec||!txt)return;
 var now=new Date();var mm=String(now.getMonth()+1).padStart(2,'0');var dd=String(now.getDate()).padStart(2,'0');
-var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
-if(link){link.href='https://en.wikipedia.org/wiki/'+months[now.getMonth()]+'_'+now.getDate();}
-var bad=['kill','murder','terror','attack','bomb','assassin','massacre','execut','died','death','fatal','crash','war','shot','stabbed','suicide','drown','sink'];
-fetch('https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/'+mm+'/'+dd)
-.then(function(r){return r.json();})
-.then(function(d){
-  var ev=(d.events||[]).filter(function(e){return e.year>=1800&&e.year<=2025;});
-  if(!ev.length)throw new Error('empty');
-  var gentle=ev.filter(function(e){var t=(e.text||'').toLowerCase();return !bad.some(function(w){return t.indexOf(w)>=0;});});
-  var pool=gentle.length?gentle:ev;
-  var start=new Date(now.getFullYear(),0,0);var doy=Math.floor((now-start)/86400000);
-  var e=pool[doy%pool.length];
-  var t=e.text||'';t=t.charAt(0).toLowerCase()+t.slice(1);
-  txt.textContent='In '+e.year+', '+t;
-  if(more)more.style.display='block';
-})
-.catch(function(){if(sec)sec.style.display='none';});
+var e=window.OTD&&window.OTD[mm+'-'+dd];
+if(!e){sec.style.display='none';return;}
+txt.textContent='In '+e.year+', '+e.text;
 })();
 </script>
 </body>
