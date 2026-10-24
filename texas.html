@@ -45,8 +45,8 @@
   .inspiration .fulllink a { color: #111; text-decoration: none; border-bottom: 1px solid #bbb; padding-bottom: 1px; }
   footer { border-top: 1px solid #ddd; margin-top: 46px; padding-top: 16px; font-family: Arial, Helvetica, sans-serif; font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; text-align: center; color: #999; }
 
-  .menubtn { position: static; flex-shrink: 0; z-index: 80; font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1; background: #fff; color: #111; border: 1px solid #cfcfcf; border-radius: 3px; padding: 8px 11px; cursor: pointer; box-shadow: 0 1px 5px rgba(0,0,0,.10); }
-  .menubtn:hover { background: #111; color: #fff; border-color: #111; }
+  .menubtn { position: static; flex-shrink: 0; z-index: 80; font-family: Arial, Helvetica, sans-serif; font-size: 19px; line-height: 1; background: none; color: #111; border: none; border-radius: 0; padding: 8px 4px; cursor: pointer; box-shadow: none; }
+  .menubtn:hover { background: none; color: #555; border-color: transparent; }
   .scrim { display: none; position: fixed; inset: 0; background: rgba(20,20,20,.42); z-index: 85; }
   .scrim.open { display: block; }
   .drawer { position: fixed; top: 0; left: 0; height: 100%; width: 272px; max-width: 84vw; background: #fff; border-right: 1px solid #e2e2e2; z-index: 90; transform: translateX(-105%); transition: transform .28s ease; padding: 16px 0 26px; overflow-y: auto; text-align: left; }
@@ -60,8 +60,8 @@
   .menu-row { display: flex; gap: 8px; padding: 18px 22px 4px; margin-top: 14px; border-top: 1px solid #eee; }
   .menu-row button { font-family: Arial, Helvetica, sans-serif; font-size: 12px; background: #fff; color: #161616; border: 1px solid #c9c9c9; border-radius: 3px; padding: 6px 11px; cursor: pointer; }
   .menu-row button.active { background: #111; color: #fff; border-color: #111; }
-  body.dark .menubtn { background: #171717; color: #eee; border-color: #3a3a3a; box-shadow: none; }
-  body.dark .menubtn:hover { background: #eee; color: #111; }
+  body.dark .menubtn { background: none; color: #eee; border-color: transparent; box-shadow: none; }
+  body.dark .menubtn:hover { background: none; color: #bbb; }
   body.dark .drawer { background: #141414; border-right-color: #2b2b2b; }
   body.dark .drawer-x { color: #9a9a9a; }
   body.dark .drawer a { color: #e9e9e9; }
@@ -111,6 +111,17 @@
   .nameplate { display: flex; align-items: center; gap: 16px; }
   .nameplate .masthead, .nameplate h1 { flex: 1; }
   @media (max-width: 640px) { .nameplate { gap: 12px; } }
+
+  .foot-name { font-size: 12px; letter-spacing: 3px; color: #555; margin-bottom: 8px; }
+  .foot-nav { margin-bottom: 8px; }
+  .foot-nav a { color: #777; text-decoration: none; }
+  .foot-nav a:hover { text-decoration: underline; }
+  .foot-note { color: #999; }
+  body.dark .foot-name { color: #aaa; }
+  body.dark .foot-nav a { color: #888; }
+
+  .card .story + .story { border-top: 1px solid #e6e6e3; margin-top: 20px; padding-top: 20px; }
+  body.dark .card .story + .story { border-top-color: #262626; }
 </style>
 </head>
 <body>
@@ -132,10 +143,10 @@
 <section>
     <h2>Texas</h2>
     <div class="story-meta" style="font-size:13px;">Crime &bull; Politics</div>
-    <div class="lanes"><div class="card"><span class="label">Crime</span><div class="empty">No entries yet.</div></div><div class="card"><span class="label">Politics</span><div class="empty">No entries yet.</div></div></div>
+    <div class="lanes"><div class="card"><span class="label">Crime</span><div class="story"><h3 class="story-title"><a href="https://www.fdd.org/analysis/fbi-arrests-alleged-islamic-state-supporter-accused-of-plotting-to-assassinate-texas-congressman/">FBI stopped alleged ISIS plot against Rep. Keith Self, reports say</a></h3><p class="story-note">Federal agents arrested a 17-year-old from McKinney on Oct. 5 after he obtained a firearm, law enforcement sources told local and national outlets this week. Investigators believe the teenager, who had recently been radicalized and was under federal surveillance, planned to target Rep. Keith Self at an Oct. 17 veterans chili cook-off fundraiser and was also preparing a separate ISIS-inspired attack in North Texas. Capitol Police notified Self after the arrest; he attended the fundraiser as scheduled with added security. The suspect’s name has not been released because he is a juvenile, and he remains in federal custody.</p><div class="story-meta">Oct. 23, 2026 &bull; McKinney</div><div class="sources">Read it: <a href="https://www.fdd.org/analysis/fbi-arrests-alleged-islamic-state-supporter-accused-of-plotting-to-assassinate-texas-congressman/">FDD’s Long War Journal</a> &middot; <a href="https://www.washingtonexaminer.com/news/justice/4776490/17-year-old-arrested-accused-of-isis-backed-assassination-plot-against-rep-keith-self/">Washington Examiner</a></div></div></div><div class="card"><span class="label">Politics</span><div class="story"><h3 class="story-title"><a href="https://www.thebrief.news/en/standard/article/36010/talarico-says-texas-is-not-for-sale-at-austin-rally-targeting-musk">Talarico tells Austin rally: “Texas is not for sale”</a></h3><p class="story-note">Democratic Senate candidate James Talarico packed an auditorium at his alma mater, the University of Texas at Austin, on Friday and made billionaire spending the center of his closing pitch. He told the crowd Elon Musk is “almost single-handedly bankrolling” the effort to put his opponent, Attorney General Ken Paxton, in the Senate, and said attack ads, mailers, and texts against him traced back to Musk. Talarico contrasted his own fundraising — his campaign says $64 million raised in the third quarter, nearly all of it in small donations — with what he called “one dude” behind Paxton. Election Day is Nov. 3.</p><div class="story-meta">Oct. 23, 2026 &bull; Austin</div><div class="sources">Read it: <a href="https://www.thebrief.news/en/standard/article/36010/talarico-says-texas-is-not-for-sale-at-austin-rally-targeting-musk">The Brief</a></div></div><div class="story"><h3 class="story-title"><a href="https://www.reuters.com/legal/government/detained-migrants-have-no-constitutional-right-bond-hearings-us-court-rules-2026-10-23/">Fifth Circuit: Constitution does not require bond hearings for detained migrants</a></h3><p class="story-note">In a 10-7 ruling, the New Orleans-based Fifth Circuit held that the Constitution’s due process protections do not require bond hearings for immigrants detained while facing removal — reversing its own July panel decision. The ruling covers Texas, Louisiana, and Mississippi, and if it stands, it closes a major path to release arguments for detainees in those states. The Supreme Court has separately agreed to decide whether federal statute requires such hearings, a different question from the constitutional one the Fifth Circuit answered.</p><div class="story-meta">Oct. 23, 2026 &bull; New Orleans</div><div class="sources">Read it: <a href="https://www.reuters.com/legal/government/detained-migrants-have-no-constitutional-right-bond-hearings-us-court-rules-2026-10-23/">Reuters</a></div></div><div class="story"><h3 class="story-title"><a href="https://lubbocklights.com/ledger-2026-10-24/">Abbott plans Lubbock get-out-the-vote stop on final day of early voting</a></h3><p class="story-note">Gov. Greg Abbott is set to visit Lubbock on Friday, Oct. 30 — the last day of early voting — for a get-out-the-vote event, according to Lubbock Lights, which cited a source close to the governor’s office and an online invitation listing a 12:15 p.m. start. The campaign had not independently confirmed the appearance when the outlet reported it Friday. Election Day is Tuesday, Nov. 3.</p><div class="story-meta">Oct. 24, 2026 &bull; Lubbock</div><div class="sources">Read it: <a href="https://lubbocklights.com/ledger-2026-10-24/">Lubbock Lights</a></div></div></div></div>
   </section>
 
-<footer>Black &amp; white edition &mdash; Around the U.S.</footer>
+<footer><div class="foot-name">Around the U.S.</div><div class="foot-nav"><a href="index.html">Front Page</a> &nbsp;&middot;&nbsp; <a href="texas.html">Texas</a> &nbsp;&middot;&nbsp; <a href="vermont.html">Vermont</a> &nbsp;&middot;&nbsp; <a href="across-us.html">Across the U.S.</a> &nbsp;&middot;&nbsp; <a href="inspiration.html">Inspiration</a></div><div class="foot-note">Black &amp; white edition &bull; Stories link to their original sources.</div></footer>
 </main>
 
 <script>
