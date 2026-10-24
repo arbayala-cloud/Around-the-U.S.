@@ -45,8 +45,8 @@
   .inspiration .fulllink a { color: #111; text-decoration: none; border-bottom: 1px solid #bbb; padding-bottom: 1px; }
   footer { border-top: 1px solid #ddd; margin-top: 46px; padding-top: 16px; font-family: Arial, Helvetica, sans-serif; font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; text-align: center; color: #999; }
 
-  .menubtn { position: static; flex-shrink: 0; z-index: 80; font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1; background: #fff; color: #111; border: 1px solid #cfcfcf; border-radius: 3px; padding: 8px 11px; cursor: pointer; box-shadow: 0 1px 5px rgba(0,0,0,.10); }
-  .menubtn:hover { background: #111; color: #fff; border-color: #111; }
+  .menubtn { position: static; flex-shrink: 0; z-index: 80; font-family: Arial, Helvetica, sans-serif; font-size: 19px; line-height: 1; background: none; color: #111; border: none; border-radius: 0; padding: 8px 4px; cursor: pointer; box-shadow: none; }
+  .menubtn:hover { background: none; color: #555; border-color: transparent; }
   .scrim { display: none; position: fixed; inset: 0; background: rgba(20,20,20,.42); z-index: 85; }
   .scrim.open { display: block; }
   .drawer { position: fixed; top: 0; left: 0; height: 100%; width: 272px; max-width: 84vw; background: #fff; border-right: 1px solid #e2e2e2; z-index: 90; transform: translateX(-105%); transition: transform .28s ease; padding: 16px 0 26px; overflow-y: auto; text-align: left; }
@@ -60,8 +60,8 @@
   .menu-row { display: flex; gap: 8px; padding: 18px 22px 4px; margin-top: 14px; border-top: 1px solid #eee; }
   .menu-row button { font-family: Arial, Helvetica, sans-serif; font-size: 12px; background: #fff; color: #161616; border: 1px solid #c9c9c9; border-radius: 3px; padding: 6px 11px; cursor: pointer; }
   .menu-row button.active { background: #111; color: #fff; border-color: #111; }
-  body.dark .menubtn { background: #171717; color: #eee; border-color: #3a3a3a; box-shadow: none; }
-  body.dark .menubtn:hover { background: #eee; color: #111; }
+  body.dark .menubtn { background: none; color: #eee; border-color: transparent; box-shadow: none; }
+  body.dark .menubtn:hover { background: none; color: #bbb; }
   body.dark .drawer { background: #141414; border-right-color: #2b2b2b; }
   body.dark .drawer-x { color: #9a9a9a; }
   body.dark .drawer a { color: #e9e9e9; }
@@ -111,6 +111,17 @@
   .nameplate { display: flex; align-items: center; gap: 16px; }
   .nameplate .masthead, .nameplate h1 { flex: 1; }
   @media (max-width: 640px) { .nameplate { gap: 12px; } }
+
+  .foot-name { font-size: 12px; letter-spacing: 3px; color: #555; margin-bottom: 8px; }
+  .foot-nav { margin-bottom: 8px; }
+  .foot-nav a { color: #777; text-decoration: none; }
+  .foot-nav a:hover { text-decoration: underline; }
+  .foot-note { color: #999; }
+  body.dark .foot-name { color: #aaa; }
+  body.dark .foot-nav a { color: #888; }
+
+  .card .story + .story { border-top: 1px solid #e6e6e3; margin-top: 20px; padding-top: 20px; }
+  body.dark .card .story + .story { border-top-color: #262626; }
 </style>
 </head>
 <body>
@@ -132,10 +143,10 @@
 <section>
     <h2>Vermont</h2>
     <div class="story-meta" style="font-size:13px;">Crime &bull; Politics</div>
-    <div class="lanes"><div class="card"><span class="label">Crime</span><h3 class="story-title"><a href="https://www.einpresswire.com/article/951299459/vsp-news-release-aggravated-assault-within-marble-valley-correctional-center">Inmate charged in Marble Valley prison assault; cellmate needed facial surgery</a></h3><p class="story-note">Vermont State Police say inmate Matthew Bradley, 41, of Rutland assaulted his cellmate Joseph Marro, 65, inside Marble Valley Correctional Center on Oct. 11. Marro&#8217;s facial injuries required surgery, including metal plates around his eyes and mouth. Bradley is due in Rutland court Nov. 23 on an aggravated assault charge; both men remain in custody.</p><div class="story-meta">Oct. 21, 2026 &bull; Rutland</div><div class="sources">Read it: <a href="https://www.einpresswire.com/article/951299459/vsp-news-release-aggravated-assault-within-marble-valley-correctional-center">VT State Police release</a></div></div><div class="card"><span class="label">Politics</span><h3 class="story-title"><a href="https://www.sevendaysvt.com/news/a-civil-debate-showcases-the-differences-between-scott-janoo/">Scott and Janoo clash in first governor&#8217;s debate</a></h3><p class="story-note">Gov. Phil Scott and challenger Amanda Janoo met in their first debate Oct. 21, hosted by Vermont Public. Health care took center stage: Janoo wants a surcharge on earners above $250,000 to fund universal primary care, while Scott favors smaller steps and says a state-run system can&#8217;t be done in Vermont. They also split on school consolidation and nuclear power. They meet again on WCAX Oct. 28, ahead of the Nov. 3 election.</p><div class="story-meta">Oct. 22, 2026 &bull; Vermont</div><div class="sources">Read it: <a href="https://www.sevendaysvt.com/news/a-civil-debate-showcases-the-differences-between-scott-janoo/">Seven Days</a> &middot; <a href="https://www.wamc.org/news/2026-10-21/vermont-gubernatorial-candidates-debate-tonight">WAMC</a></div></div></div>
+    <div class="lanes"><div class="card"><span class="label">Crime</span><h3 class="story-title"><a href="https://www.einpresswire.com/article/951299459/vsp-news-release-aggravated-assault-within-marble-valley-correctional-center">Inmate charged in Marble Valley prison assault; cellmate needed facial surgery</a></h3><p class="story-note">Vermont State Police say inmate Matthew Bradley, 41, of Rutland assaulted his cellmate Joseph Marro, 65, inside Marble Valley Correctional Center on Oct. 11. Marro&#8217;s facial injuries required surgery, including metal plates around his eyes and mouth. Bradley is due in Rutland court Nov. 23 on an aggravated assault charge; both men remain in custody.</p><div class="story-meta">Oct. 21, 2026 &bull; Rutland</div><div class="sources">Read it: <a href="https://www.einpresswire.com/article/951299459/vsp-news-release-aggravated-assault-within-marble-valley-correctional-center">VT State Police release</a></div></div><div class="card"><span class="label">Politics</span><div class="story"><h3 class="story-title"><a href="https://www.sevendaysvt.com/news/a-civil-debate-showcases-the-differences-between-scott-janoo/">Scott and Janoo clash in first governor’s debate</a></h3><p class="story-note">Gov. Phil Scott and challenger Amanda Janoo met in their first debate Oct. 21, hosted by Vermont Public. Health care took center stage: Janoo wants a surcharge on earners above $250,000 to fund universal primary care, while Scott favors smaller steps and says a state-run system can&#8217;t be done in Vermont. They also split on school consolidation and nuclear power. They meet again on WCAX Oct. 28, ahead of the Nov. 3 election.</p><div class="story-meta">Oct. 22, 2026 &bull; Vermont</div><div class="sources">Read it: <a href="https://www.sevendaysvt.com/news/a-civil-debate-showcases-the-differences-between-scott-janoo/">Seven Days</a> &middot; <a href="https://www.wamc.org/news/2026-10-21/vermont-gubernatorial-candidates-debate-tonight">WAMC</a></div></div><div class="story"><h3 class="story-title"><a href="https://www.theamericanquorum.com/state-news-vermont-2026-10-21-a/">Vermont’s motel-shelter screening rules draw scrutiny from lawmakers</a></h3><p class="story-note">Vermont’s new motel-shelter screening system is drawing calls for revision from lawmakers and housing advocates, who say the intake process is more restrictive than the law intended, while state officials say scoring is necessary to ration a limited supply of rooms. Under the Department for Children and Families’ emergency rule, in effect since Sept. 1, applicants answer detailed questions about housing, health, safety, and support, and are prioritized for placement — families with young children and people facing medical or domestic-violence emergencies rank highest. Occupied motel rooms rose from 390 in late August to 668 by Oct. 19, still below the statutory ceiling.</p><div class="story-meta">Oct. 22, 2026 &bull; Montpelier</div><div class="sources">Read it: <a href="https://www.theamericanquorum.com/state-news-vermont-2026-10-21-a/">The American Quorum</a></div></div></div></div>
   </section>
 
-<footer>Black &amp; white edition &mdash; Around the U.S.</footer>
+<footer><div class="foot-name">Around the U.S.</div><div class="foot-nav"><a href="index.html">Front Page</a> &nbsp;&middot;&nbsp; <a href="texas.html">Texas</a> &nbsp;&middot;&nbsp; <a href="vermont.html">Vermont</a> &nbsp;&middot;&nbsp; <a href="across-us.html">Across the U.S.</a> &nbsp;&middot;&nbsp; <a href="inspiration.html">Inspiration</a></div><div class="foot-note">Black &amp; white edition &bull; Stories link to their original sources.</div></footer>
 </main>
 
 <script>
