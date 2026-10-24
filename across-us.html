@@ -9,8 +9,8 @@
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; background: #fdfdfc; color: #161616; font-family: Georgia, 'Times New Roman', serif; -webkit-font-smoothing: antialiased; }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 34px 22px 48px; }
-  header { text-align: center; padding-top: 54px; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 20px 22px 48px; }
+  header { text-align: center; }
   h1.masthead { margin: 0; font-family: 'UnifrakturMaguntia', Georgia, serif; font-weight: 400; font-size: 74px; line-height: 1.05; color: #111; }
   h1.masthead a { color: #111; text-decoration: none; }
   .dateline { margin-top: 14px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; letter-spacing: 2.2px; text-transform: uppercase; color: #444; text-align: center; }
@@ -45,7 +45,7 @@
   .inspiration .fulllink a { color: #111; text-decoration: none; border-bottom: 1px solid #bbb; padding-bottom: 1px; }
   footer { border-top: 1px solid #ddd; margin-top: 46px; padding-top: 16px; font-family: Arial, Helvetica, sans-serif; font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; text-align: center; color: #999; }
 
-  .menubtn { position: fixed; top: 20px; left: 20px; z-index: 80; font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1; background: #fff; color: #111; border: 1px solid #cfcfcf; border-radius: 3px; padding: 8px 11px; cursor: pointer; box-shadow: 0 1px 5px rgba(0,0,0,.10); }
+  .menubtn { position: static; flex-shrink: 0; z-index: 80; font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1; background: #fff; color: #111; border: 1px solid #cfcfcf; border-radius: 3px; padding: 8px 11px; cursor: pointer; box-shadow: 0 1px 5px rgba(0,0,0,.10); }
   .menubtn:hover { background: #111; color: #fff; border-color: #111; }
   .scrim { display: none; position: fixed; inset: 0; background: rgba(20,20,20,.42); z-index: 85; }
   .scrim.open { display: block; }
@@ -106,16 +106,20 @@
   body.dark .inspiration .ref { color: #7d7d7d; }
   body.dark .inspiration .fulllink a { color: #f4f4f4; border-bottom-color: #555; }
   body.dark footer { border-top-color: #262626; color: #6f6f6f; }
-  @media (max-width: 640px) { h1.masthead { font-size: 47px; } .wrap { padding: 26px 16px 40px; } .lanes { grid-template-columns: 1fr; } .topstory-title { font-size: 29px; } section h2 { font-size: 23px; } .inspiration { width: 78%; } }
+  @media (max-width: 640px) { h1.masthead { font-size: 38px; } .wrap { padding: 26px 16px 40px; } .lanes { grid-template-columns: 1fr; } .topstory-title { font-size: 29px; } section h2 { font-size: 23px; } .inspiration { width: 78%; } }
+
+  .nameplate { display: flex; align-items: center; gap: 16px; }
+  .nameplate .masthead, .nameplate h1 { flex: 1; }
+  @media (max-width: 640px) { .nameplate { gap: 12px; } }
 </style>
 </head>
 <body>
 <main class="wrap">
   <header>
     <div class="rule-top"></div>
-    <h1 class="masthead"><a href="index.html">Around the U.S.</a></h1>
+    <div class="nameplate"><button class="menubtn" id="menuBtn" aria-label="Open menu" onclick="ausMenu(event)">&#9776;</button><h1 class="masthead"><a href="index.html">Around the U.S.</a></h1></div>
     <div class="dateline">Around the U.S. &bull; Across the U.S. Edition</div>
-    <button class="menubtn" id="menuBtn" aria-label="Open menu" onclick="ausMenu(event)">&#9776;</button><div class="scrim" id="ausScrim" onclick="ausMenu()"></div><aside class="drawer" id="ausMenu">
+    <div class="scrim" id="ausScrim" onclick="ausMenu()"></div><aside class="drawer" id="ausMenu">
 <div class="drawer-head"><button class="drawer-x" aria-label="Close menu" onclick="ausMenu()">&#10005;</button></div>
 <a href="index.html">Front Page</a>
 <a href="texas.html">Texas</a>
