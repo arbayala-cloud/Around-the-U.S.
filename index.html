@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Around the U.S.</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Georgia, 'Times New Roman', serif; background: #ffffff; color: #111111; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 28px 18px 48px; }
+  header { border-bottom: 4px solid #111; padding-bottom: 14px; margin-bottom: 22px; text-align: center; }
+  h1 { margin: 0; font-size: 44px; letter-spacing: 1px; text-transform: uppercase; }
+  .tagline { margin-top: 8px; font-family: Arial, sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+  .date { margin-top: 6px; font-family: Arial, sans-serif; font-size: 13px; color: #333; }
+  .inspiration { background: #111; color: #fff; padding: 22px; margin: 22px 0 30px; }
+  .inspiration h2, section h2 { margin: 0 0 10px; font-family: Arial, sans-serif; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
+  .inspiration p { margin: 0; font-size: 22px; line-height: 1.35; }
+  section { border-top: 2px solid #111; padding-top: 18px; margin-top: 26px; }
+  section h2 { font-size: 22px; letter-spacing: 1px; }
+  .lanes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .card { border: 1px solid #111; padding: 14px; min-height: 92px; background: #fff; }
+  .label { display: inline-block; border: 1px solid #111; padding: 2px 7px; font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .empty { color: #444; font-size: 16px; line-height: 1.4; }
+  footer { border-top: 2px solid #111; margin-top: 34px; padding-top: 14px; font-family: Arial, sans-serif; font-size: 12px; text-align: center; color: #333; }
+  @media (max-width: 640px) { h1 { font-size: 34px; } .lanes { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <h1>Around the U.S.</h1>
+    <div class="tagline">Texas &bull; Vermont &bull; Across the U.S.</div>
+    <div class="date" id="today"></div>
+  </header>
+
+  <div class="inspiration">
+    <h2>Inspiration of the Day</h2>
+    <p>Set the inspiration of the day here.</p>
+  </div>
+
+  <section>
+    <h2>Texas</h2>
+    <div class="lanes">
+      <div class="card"><span class="label">Crime</span><div class="empty">No entries yet.</div></div>
+      <div class="card"><span class="label">Politics</span><div class="empty">No entries yet.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Vermont</h2>
+    <div class="lanes">
+      <div class="card"><span class="label">Crime</span><div class="empty">No entries yet.</div></div>
+      <div class="card"><span class="label">Politics</span><div class="empty">No entries yet.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Across the U.S.</h2>
+    <div class="lanes">
+      <div class="card"><span class="label">Crime</span><div class="empty">No entries yet.</div></div>
+      <div class="card"><span class="label">Politics</span><div class="empty">No entries yet.</div></div>
+    </div>
+  </section>
+
+  <footer>Black &amp; white foundation &mdash; more to come, step by step.</footer>
+</main>
+<script>
+  document.getElementById('today').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+</script>
+</body>
+</html>
