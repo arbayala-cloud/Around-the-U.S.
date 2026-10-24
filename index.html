@@ -45,7 +45,7 @@
   .inspiration .fulllink a { color: #111; text-decoration: none; border-bottom: 1px solid #bbb; padding-bottom: 1px; }
   footer { border-top: 3px double #111; margin-top: 46px; padding-top: 16px; font-family: Arial, Helvetica, sans-serif; font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; text-align: center; color: #999; }
 
-  .menubtn { position: static; flex-shrink: 0; z-index: 80; font-family: Arial, Helvetica, sans-serif; font-size: 19px; line-height: 1; background: none; color: #111; border: none; border-radius: 0; padding: 8px 4px; cursor: pointer; box-shadow: none; }
+  .menubtn { position: static; flex-shrink: 0; z-index: 80; font-family: Arial, Helvetica, sans-serif; font-size: 19px; line-height: 1; background: none; color: #111; border: none; border-radius: 0; width: 32px; padding: 8px 0; text-align: center; cursor: pointer; box-shadow: none; }
   .menubtn:hover { background: none; color: #555; border-color: transparent; }
   .scrim { display: none; position: fixed; inset: 0; background: rgba(20,20,20,.42); z-index: 85; }
   .scrim.open { display: block; }
@@ -106,7 +106,7 @@
   body.dark .inspiration .ref { color: #7d7d7d; }
   body.dark .inspiration .fulllink a { color: #f4f4f4; border-bottom-color: #555; }
   body.dark footer { border-top-color: #555; color: #6f6f6f; }
-  @media (max-width: 640px) { h1.masthead { font-size: 32px; } .wrap { padding: 26px 16px 40px; } .lanes { grid-template-columns: 1fr; } .topstory-title { font-size: 29px; } section h2 { font-size: 23px; } .inspiration { width: 78%; } }
+  @media (max-width: 640px) { h1.masthead { font-size: 30px; } .wrap { padding: 26px 16px 40px; } .lanes { grid-template-columns: 1fr; } .topstory-title { font-size: 29px; } section h2 { font-size: 23px; } .inspiration { width: 78%; } }
 
   .weather { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; margin: 18px auto 4px; padding: 10px 14px; background: #f7f6f2; border: 1px solid #e3e1da; border-top: 3px solid #111; font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; text-align: center; color: #161616; }
   .weather .wtext { line-height: 1.5; }
@@ -120,7 +120,8 @@
   body.dark .weather button:hover { background: none; color: #bbb; }
 
   .nameplate { display: flex; align-items: center; gap: 16px; }
-  .nameplate .masthead, .nameplate h1 { flex: 1; }
+  .nameplate .masthead, .nameplate h1 { flex: 1; text-align: center; }
+  .namespacer { flex-shrink: 0; width: 32px; }
   @media (max-width: 640px) { .nameplate { gap: 12px; } }
 
   .foot-name { font-size: 12px; letter-spacing: 3px; color: #555; margin-bottom: 8px; }
@@ -144,7 +145,7 @@
 <main class="wrap">
   <header>
     <div class="rule-top"></div>
-    <div class="nameplate"><button class="menubtn" id="menuBtn" aria-label="Open menu" onclick="ausMenu(event)">&#9776;</button><h1 class="masthead"><a href="index.html">The Saint &amp; Star</a></h1></div>
+    <div class="nameplate"><button class="menubtn" id="menuBtn" aria-label="Open menu" onclick="ausMenu(event)">&#9776;</button><h1 class="masthead"><a href="index.html">The Saint &amp; Star</a></h1><span class="namespacer" aria-hidden="true"></span></div>
     <div class="dateline"><span id="dateline-date"></span></div>
     <div class="scrim" id="ausScrim" onclick="ausMenu()"></div><aside class="drawer" id="ausMenu">
 <div class="drawer-head"><button class="drawer-x" aria-label="Close menu" onclick="ausMenu()">&#10005;</button></div>
