@@ -23,8 +23,8 @@
   .day .r { margin-top: 7px; font-family: Arial, Helvetica, sans-serif; font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; color: #555; }
   footer { border-top: 1px solid #ddd; margin-top: 40px; padding-top: 16px; font-family: Arial, Helvetica, sans-serif; font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; text-align: center; color: #999; }
 
-  .menubtn { position: static; flex-shrink: 0; z-index: 80; font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1; background: #fff; color: #111; border: 1px solid #cfcfcf; border-radius: 3px; padding: 8px 11px; cursor: pointer; box-shadow: 0 1px 5px rgba(0,0,0,.10); }
-  .menubtn:hover { background: #111; color: #fff; border-color: #111; }
+  .menubtn { position: static; flex-shrink: 0; z-index: 80; font-family: Arial, Helvetica, sans-serif; font-size: 19px; line-height: 1; background: none; color: #111; border: none; border-radius: 0; padding: 8px 4px; cursor: pointer; box-shadow: none; }
+  .menubtn:hover { background: none; color: #555; border-color: transparent; }
   .scrim { display: none; position: fixed; inset: 0; background: rgba(20,20,20,.42); z-index: 85; }
   .scrim.open { display: block; }
   .drawer { position: fixed; top: 0; left: 0; height: 100%; width: 272px; max-width: 84vw; background: #fff; border-right: 1px solid #e2e2e2; z-index: 90; transform: translateX(-105%); transition: transform .28s ease; padding: 16px 0 26px; overflow-y: auto; text-align: left; }
@@ -38,8 +38,8 @@
   .menu-row { display: flex; gap: 8px; padding: 18px 22px 4px; margin-top: 14px; border-top: 1px solid #eee; }
   .menu-row button { font-family: Arial, Helvetica, sans-serif; font-size: 12px; background: #fff; color: #161616; border: 1px solid #c9c9c9; border-radius: 3px; padding: 6px 11px; cursor: pointer; }
   .menu-row button.active { background: #111; color: #fff; border-color: #111; }
-  body.dark .menubtn { background: #171717; color: #eee; border-color: #3a3a3a; box-shadow: none; }
-  body.dark .menubtn:hover { background: #eee; color: #111; }
+  body.dark .menubtn { background: none; color: #eee; border-color: transparent; box-shadow: none; }
+  body.dark .menubtn:hover { background: none; color: #bbb; }
   body.dark .drawer { background: #141414; border-right-color: #2b2b2b; }
   body.dark .drawer-x { color: #9a9a9a; }
   body.dark .drawer a { color: #e9e9e9; }
@@ -79,6 +79,14 @@
   .nameplate { display: flex; align-items: center; gap: 16px; }
   .nameplate .masthead, .nameplate h1 { flex: 1; }
   @media (max-width: 640px) { .nameplate { gap: 12px; } }
+
+  .foot-name { font-size: 12px; letter-spacing: 3px; color: #555; margin-bottom: 8px; }
+  .foot-nav { margin-bottom: 8px; }
+  .foot-nav a { color: #777; text-decoration: none; }
+  .foot-nav a:hover { text-decoration: underline; }
+  .foot-note { color: #999; }
+  body.dark .foot-name { color: #aaa; }
+  body.dark .foot-nav a { color: #888; }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
@@ -103,7 +111,7 @@
   <nav class="months" id="monthnav"></nav>
   <div id="year"></div>
 
-  <footer>One verse for every day of the year &mdash; Around the U.S.</footer>
+  <footer><div class="foot-name">Around the U.S.</div><div class="foot-nav"><a href="index.html">Front Page</a> &nbsp;&middot;&nbsp; <a href="texas.html">Texas</a> &nbsp;&middot;&nbsp; <a href="vermont.html">Vermont</a> &nbsp;&middot;&nbsp; <a href="across-us.html">Across the U.S.</a> &nbsp;&middot;&nbsp; <a href="inspiration.html">Inspiration</a></div><div class="foot-note">One verse for every day of the year &bull; King James Version.</div></footer>
 </main>
 <script src="inspirations.js"></script>
 <script>
