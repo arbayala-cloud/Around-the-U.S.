@@ -204,7 +204,17 @@ document.addEventListener('click',function(e){var m=document.getElementById('aus
 (function(){
 var box=document.getElementById('weatherText');var input=document.getElementById('zipInput');
 function show(t){if(box)box.textContent=t;}
-function iconFor(p){var s=(p.shortForecast||'').toLowerCase();var night=!p.isDaytime;if(s.indexOf('thunder')>=0||s.indexOf('lightning')>=0)return '\u26C8\uFE0F';if(s.indexOf('snow')>=0||s.indexOf('sleet')>=0||s.indexOf('blizzard')>=0){if(s.indexOf('rain')>=0)return '\uD83C\uDF28\uFE0F';return '\u2744\uFE0F';}if(s.indexOf('rain')>=0||s.indexOf('shower')>=0||s.indexOf('drizzle')>=0)return '\uD83C\uDF27\uFE0F';if(s.indexOf('fog')>=0||s.indexOf('mist')>=0||s.indexOf('haze')>=0||s.indexOf('smoke')>=0)return '\uD83C\uDF2B\uFE0F';if(s.indexOf('wind')>=0||s.indexOf('blustery')>=0||s.indexOf('breezy')>=0)return '\uD83D\uDCA8';if(s.indexOf('partly')>=0)return night?'\u2601\uFE0F':'\u26C5';if(s.indexOf('mostly cloudy')>=0||s.indexOf('cloudy')>=0||s.indexOf('overcast')>=0)return '\u2601\uFE0F';if(s.indexOf('clear')>=0||s.indexOf('sunny')>=0)return night?'\uD83C\uDF19':'\u2600\uFE0F';return '\u26C5';}function fmt(p){var t=p.temperature;var u=p.temperatureUnit||'F';var s=p.shortForecast||'';var w='';if(p.windSpeed)w=' \u00B7 Wind '+p.windDirection+' '+p.windSpeed;return iconFor(p)+' '+t+'\u00B0'+u+' '+s+w;}
+function iconFor(txt,night){var s=(txt||'').toLowerCase();
+if(s.indexOf('thunder')>=0||s.indexOf('lightning')>=0)return '\u26C8\uFE0F';
+if(s.indexOf('snow')>=0||s.indexOf('sleet')>=0||s.indexOf('blizzard')>=0){if(s.indexOf('rain')>=0)return '\uD83C\uDF28\uFE0F';return '\u2744\uFE0F';}
+if(s.indexOf('rain')>=0||s.indexOf('shower')>=0||s.indexOf('drizzle')>=0)return '\uD83C\uDF27\uFE0F';
+if(s.indexOf('fog')>=0||s.indexOf('mist')>=0||s.indexOf('haze')>=0||s.indexOf('smoke')>=0)return '\uD83C\uDF2B\uFE0F';
+if(s.indexOf('wind')>=0||s.indexOf('blustery')>=0||s.indexOf('breezy')>=0)return '\uD83D\uDCA8';
+if(s.indexOf('partly')>=0)return night?'\u2601\uFE0F':'\u26C5';
+if(s.indexOf('mostly cloudy')>=0||s.indexOf('cloudy')>=0||s.indexOf('overcast')>=0)return '\u2601\uFE0F';
+if(s.indexOf('clear')>=0||s.indexOf('sunny')>=0)return night?'\uD83C\uDF19':'\u2600\uFE0F';
+return '\u26C5';}
+function compass(deg){var d=['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];return d[Math.round(deg/22.5)%16];}
 async function load(zip){
   show('Checking weather for '+zip+'\u2026');
   try{
@@ -218,7 +228,8 @@ async function load(zip){
     var place=city+(ad.state?', '+ad.state:'');
     var pt=await fetch('https://api.weather.gov/points/'+lat.toFixed(4)+','+lon.toFixed(4),{headers:{'Accept':'application/geo+json'}});
     var pj=await pt.json();
-    var furl=pj&&pj.properties&&pj.properties.forecast;
+    var props=pj&&pj.properties||{};
+    var furl=props.forecast;
     if(!furl)throw new Error('noforecast');
     var fr=await fetch(furl,{headers:{'Accept':'application/geo+json'}});
     var fj=await fr.json();
@@ -229,7 +240,25 @@ async function load(zip){
     for(var i=0;i<periods.length&&i<4;i++){if(periods[i].isDaytime&&hi===null)hi=periods[i].temperature;if(!periods[i].isDaytime&&lo===null)lo=periods[i].temperature;}
     var hl='';
     if(hi!==null&&lo!==null)hl=' \u00B7 H '+hi+'\u00B0 / L '+lo+'\u00B0';
-    show((place?place+' \u2014 ':'')+fmt(now)+hl);
+    var curTemp=null,curDesc=null,curWind=null;
+    try{
+      var st=await fetch(props.observationStations,{headers:{'Accept':'application/geo+json'}});
+      var sj=await st.json();
+      var feats=sj.features||[];
+      if(feats.length){
+        var orr=await fetch(feats[0].id+'/observations/latest',{headers:{'Accept':'application/geo+json'}});
+        var oj=await orr.json();
+        var op=oj.properties||{};
+        if(op.temperature&&op.temperature.value!==null&&op.temperature.value!==undefined)curTemp=Math.round(op.temperature.value*9/5+32);
+        if(op.textDescription)curDesc=op.textDescription;
+        if(op.windSpeed&&op.windSpeed.value!==null&&op.windSpeed.value!==undefined&&op.windDirection&&op.windDirection.value!==null&&op.windDirection.value!==undefined)curWind=compass(op.windDirection.value)+' '+Math.round(op.windSpeed.value*0.621371)+' mph';
+      }
+    }catch(e){}
+    var temp=(curTemp!==null)?curTemp:now.temperature;
+    var desc=curDesc||now.shortForecast;
+    var wind=(curWind!==null)?curWind:(now.windSpeed?now.windDirection+' '+now.windSpeed:null);
+    var night=!now.isDaytime;
+    show((place?place+' \u2014 ':'')+iconFor(desc,night)+' '+temp+'\u00B0F '+desc+(wind?' \u00B7 Wind '+wind:'')+hl);
   }catch(e){
     if(e&&e.message==='notfound')show('Could not find that ZIP code \u2014 try another one.');
     else show('Weather is unavailable right now \u2014 please try again later.');
