@@ -107,6 +107,17 @@
   body.dark .inspiration .fulllink a { color: #f4f4f4; border-bottom-color: #555; }
   body.dark footer { border-top-color: #262626; color: #6f6f6f; }
   @media (max-width: 640px) { h1.masthead { font-size: 47px; } .wrap { padding: 26px 16px 40px; } .lanes { grid-template-columns: 1fr; } .topstory-title { font-size: 29px; } section h2 { font-size: 23px; } .inspiration { width: 78%; } }
+
+  .weather { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; margin: 18px auto 4px; padding: 10px 14px; background: #f7f6f2; border: 1px solid #e3e1da; border-top: 3px solid #111; font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; text-align: center; color: #161616; }
+  .weather .wtext { line-height: 1.5; }
+  .weather form { display: flex; gap: 6px; align-items: center; }
+  .weather input { width: 88px; padding: 6px 8px; border: 1px solid #c9c9c9; border-radius: 3px; font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; background: #fff; color: #161616; }
+  .weather button { font-family: Arial, Helvetica, sans-serif; font-size: 12px; background: #fff; color: #161616; border: 1px solid #c9c9c9; border-radius: 3px; padding: 6px 11px; cursor: pointer; }
+  .weather button:hover { background: #111; color: #fff; border-color: #111; }
+  body.dark .weather { background: #171717; border-color: #2b2b2b; border-top-color: #e9e9e9; color: #e9e9e9; }
+  body.dark .weather input { background: #101010; color: #e9e9e9; border-color: #3d3d3d; }
+  body.dark .weather button { background: #171717; color: #e9e9e9; border-color: #3d3d3d; }
+  body.dark .weather button:hover { background: #e9e9e9; color: #111; }
 </style>
 </head>
 <body>
@@ -125,6 +136,7 @@
 <div class="menu-row"><button id="themeBtn" onclick="ausTheme()">&#9790; Dark</button><button data-fs="s" onclick="ausFont('s')">A&#8722;</button><button data-fs="m" onclick="ausFont('m')">A</button><button data-fs="l" onclick="ausFont('l')">A+</button></div>
 </aside>
   </header>
+  <div class="weather" id="weatherBox"><span class="wtext" id="weatherText">Loading weather&hellip;</span><form id="zipForm"><input id="zipInput" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="ZIP code" aria-label="ZIP code" value="76180"><button type="submit">Check</button></form></div>
 
   <div class="inspiration">
     <h2>Inspiration of the Day</h2>
@@ -187,6 +199,48 @@ mark();})();
 <script>
 window.ausMenu=function(ev){if(ev)ev.stopPropagation();var m=document.getElementById('ausMenu');var s=document.getElementById('ausScrim');if(m)m.classList.toggle('open');if(s)s.classList.toggle('open');};
 document.addEventListener('click',function(e){var m=document.getElementById('ausMenu');var s=document.getElementById('ausScrim');var b=document.getElementById('menuBtn');if(m&&m.classList.contains('open')&&!m.contains(e.target)&&e.target!==b&&!(b&&b.contains(e.target))){m.classList.remove('open');if(s)s.classList.remove('open');}});
+</script>
+<script>
+(function(){
+var box=document.getElementById('weatherText');var input=document.getElementById('zipInput');
+function show(t){if(box)box.textContent=t;}
+function fmt(p){var t=p.temperature;var u=p.temperatureUnit||'F';var s=p.shortForecast||'';var w='';if(p.windSpeed)w=' \u00B7 Wind '+p.windDirection+' '+p.windSpeed;return t+'\u00B0'+u+' '+s+w;}
+async function load(zip){
+  show('Checking weather for '+zip+'\u2026');
+  try{
+    var g=await fetch('https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address='+encodeURIComponent(zip)+'&benchmark=Public_AR_Current&format=json');
+    var gj=await g.json();
+    var m=gj&&gj.result&&gj.result.addressMatches&&gj.result.addressMatches[0];
+    if(!m)throw new Error('notfound');
+    var lon=m.coordinates.x,lat=m.coordinates.y;
+    var ac=m.addressComponents||{};
+    var place=(ac.city?ac.city+', ':'')+(ac.state||'');
+    var pt=await fetch('https://api.weather.gov/points/'+lat.toFixed(4)+','+lon.toFixed(4),{headers:{'Accept':'application/geo+json'}});
+    var pj=await pt.json();
+    var furl=pj&&pj.properties&&pj.properties.forecast;
+    if(!furl)throw new Error('noforecast');
+    var fr=await fetch(furl,{headers:{'Accept':'application/geo+json'}});
+    var fj=await fr.json();
+    var periods=fj&&fj.properties&&fj.properties.periods||[];
+    if(!periods.length)throw new Error('noforecast');
+    var now=periods[0];
+    var hi=null,lo=null;
+    for(var i=0;i<periods.length&&i<4;i++){if(periods[i].isDaytime&&hi===null)hi=periods[i].temperature;if(!periods[i].isDaytime&&lo===null)lo=periods[i].temperature;}
+    var hl='';
+    if(hi!==null&&lo!==null)hl=' \u00B7 H '+hi+'\u00B0 / L '+lo+'\u00B0';
+    show((place?place+' \u2014 ':'')+fmt(now)+hl);
+  }catch(e){
+    if(e&&e.message==='notfound')show('Could not find that ZIP code \u2014 try another one.');
+    else show('Weather is unavailable right now \u2014 please try again later.');
+  }
+}
+var saved=null;try{saved=localStorage.getItem('aus-zip');}catch(e){}
+var start=(saved&&/^[0-9]{5}$/.test(saved))?saved:'76180';
+if(input)input.value=start;
+load(start);
+var form=document.getElementById('zipForm');
+if(form)form.addEventListener('submit',function(e){e.preventDefault();var z=(input.value||'').trim();if(!/^[0-9]{5}$/.test(z)){show('Enter a 5-digit ZIP code.');return;}try{localStorage.setItem('aus-zip',z);}catch(e){}load(z);});
+})();
 </script>
 </body>
 </html>
