@@ -84,6 +84,24 @@
   body.font-l .inspiration p { font-size: 15px; }
   body.font-s .day p { font-size: 15px; }
   body.font-l .day p { font-size: 20px; }
+
+  .menuwrap { position: relative; text-align: center; margin: 2px 0 16px; }
+  .menubtn { font-family: Arial, sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; background: #fff; color: #111; border: 2px solid #111; padding: 7px 20px; cursor: pointer; }
+  .menu { display: none; position: absolute; left: 50%; transform: translateX(-50%); top: calc(100% + 8px); background: #fff; border: 2px solid #111; box-shadow: 4px 4px 0 #111; min-width: 240px; z-index: 60; text-align: left; }
+  .menu.open { display: block; }
+  .menu-group { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #555; padding: 10px 14px 2px; }
+  .menu a { display: block; padding: 9px 14px; color: #111; text-decoration: none; font-family: Arial, sans-serif; font-size: 14px; border-bottom: 1px solid #ddd; }
+  .menu a.active { font-weight: bold; background: #f0f0f0; }
+  .menu-row { display: flex; gap: 6px; padding: 8px 14px 12px; }
+  .menu-row button { font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 1px; background: #fff; color: #111; border: 2px solid #111; padding: 5px 10px; cursor: pointer; }
+  .menu-row button.active { background: #111; color: #fff; }
+  body.dark .menubtn { background: #1c1c1c; color: #eee; border-color: #eee; }
+  body.dark .menu { background: #1c1c1c; border-color: #eee; box-shadow: 4px 4px 0 #000; }
+  body.dark .menu a { color: #eee; border-bottom-color: #444; }
+  body.dark .menu a.active { background: #333; }
+  body.dark .menu-group { color: #aaa; }
+  body.dark .menu-row button { background: #1c1c1c; color: #eee; border-color: #eee; }
+  body.dark .menu-row button.active { background: #eee; color: #111; }
 </style>
 </head>
 <body>
@@ -92,9 +110,17 @@
     <div class="rule-top"></div>
     <h1 class="masthead"><a href="index.html">Around the U.S.</a></h1>
     <div class="dateline">Around the U.S. &bull; Vermont Edition</div>
-    <div class="nav"><a href="index.html">Front Page</a><a href="texas.html">Texas</a><a href="vermont.html" class="here">Vermont</a><a href="across-us.html">Across the U.S.</a></div>
+    <div class="menuwrap"><button class="menubtn" id="menuBtn" onclick="ausMenu(event)">&#9776; Menu</button><div class="menu" id="ausMenu">
+<div class="menu-group">Sections</div>
+<a href="index.html">Front Page</a>
+<a href="texas.html">Texas</a>
+<a href="vermont.html" class="active">Vermont</a>
+<a href="across-us.html">Across the U.S.</a>
+<a href="inspiration.html">Inspiration &mdash; All 365 Days</a>
+<div class="menu-group">Reading</div>
+<div class="menu-row"><button id="themeBtn" onclick="ausTheme()">&#9790; Dark</button><button data-fs="s" onclick="ausFont('s')">A&#8722;</button><button data-fs="m" onclick="ausFont('m')">A</button><button data-fs="l" onclick="ausFont('l')">A+</button></div>
+</div></div>
   </header>
-  <div class="reader-bar"><span class="rb-label">Reading</span><button id="themeBtn" onclick="ausTheme()">&#9790; Dark</button><button data-fs="s" onclick="ausFont('s')">A&#8722;</button><button data-fs="m" onclick="ausFont('m')">A</button><button data-fs="l" onclick="ausFont('l')">A+</button></div>
 <section>
     <h2>Vermont</h2>
     <div class="story-meta" style="font-size:13px;">Crime &bull; Politics</div>
@@ -110,6 +136,10 @@ function mark(){var d=document.body.classList.contains('dark');var tb=document.g
 window.ausTheme=function(){document.body.classList.toggle('dark');try{localStorage.setItem('aus-theme',document.body.classList.contains('dark')?'dark':'light');}catch(e){}mark();};
 window.ausFont=function(s){document.body.classList.remove('font-s');document.body.classList.remove('font-l');if(s!=='m')document.body.classList.add('font-'+s);try{localStorage.setItem('aus-font',s);}catch(e){}mark();};
 mark();})();
+</script>
+<script>
+window.ausMenu=function(ev){if(ev)ev.stopPropagation();var m=document.getElementById('ausMenu');if(m)m.classList.toggle('open');};
+document.addEventListener('click',function(e){var w=document.querySelector('.menuwrap');var m=document.getElementById('ausMenu');if(m&&w&&!w.contains(e.target))m.classList.remove('open');});
 </script>
 </body>
 </html>
